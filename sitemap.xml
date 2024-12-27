@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Promptly-Technologies-LLC.github.io/imfp/index.html</loc>
-    <lastmod>2024-11-06T20:52:37.548Z</lastmod>
+    <loc>https://Promptly-Technologies-LLC.github.io/imfp/imfp/data.html</loc>
+    <lastmod>2024-12-27T19:42:06.364Z</lastmod>
   </url>
   <url>
-    <loc>https://Promptly-Technologies-LLC.github.io/imfp/imfp/data.html</loc>
-    <lastmod>2024-11-06T20:52:37.546Z</lastmod>
+    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/demo.html</loc>
+    <lastmod>2024-12-27T22:24:53.574Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Promptly-Technologies-LLC.github.io/imfp/index.html</loc>
+    <lastmod>2024-12-27T19:44:23.394Z</lastmod>
   </url>
 </urlset>
