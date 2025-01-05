@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,10 +70,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ce8de41c5dcf49f81f95ec2a54f3a28e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,6 +105,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -163,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
   <li><a href="#gii-percent-change-dependent-variable" id="toc-gii-percent-change-dependent-variable" class="nav-link" data-scroll-target="#gii-percent-change-dependent-variable">GII Percent Change: Dependent Variable</a></li>
-  <li><a href="#gdp-independent-variable" id="toc-gdp-independent-variable" class="nav-link" data-scroll-target="#gdp-independent-variable">GDP: Independent Variable</a></li>
+  <li><a href="#gdp-percent-change-independent-variable" id="toc-gdp-percent-change-independent-variable" class="nav-link" data-scroll-target="#gdp-percent-change-independent-variable">GDP Percent Change: Independent Variable</a></li>
   </ul></li>
   <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a>
   <ul class="collapse">
@@ -180,6 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#time-series-analysis" id="toc-time-series-analysis" class="nav-link" data-scroll-target="#time-series-analysis">Time Series Analysis</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions">Future Directions</a></li>
   <li><a href="#about-the-author" id="toc-about-the-author" class="nav-link" data-scroll-target="#about-the-author">About the Author</a></li>
   </ul>
 </nav>
@@ -255,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="suggested-packages">Suggested packages</h2>
 <p>The integration of other Python tools not only streamlined our computational processes but also ensured consistency across the project.</p>
 <p>A custom module is written to simplify the process of making API calls and fetching information with imfp library. <code>load_or_fetch_databases</code>, <code>load_or_fetch_parameters</code> <code>load_or_fetch_dataset</code> load and retreive database, parameters, and dataset from a local or remote source. <code>view_dataframe_in_browser</code> displays dataframe in a web browser.</p>
-<div id="5c10451d" class="cell" data-execution_count="1">
+<div id="6461f96f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tempfile <span class="im">import</span> NamedTemporaryFile</span>
@@ -349,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>LinearRegression</code>: implement linear regression</p>
 <p><code>tabulate</code>: format data into tables</p>
 <p><code>statsmodels.api</code>, <code>adfuller</code>, <code>ARIMA</code>,<code>VAR</code>,<code>plot_acf</code>,<code>plot_pacf</code>,<code>mean_absolute_error</code>,<code>mean_squared_error</code>, and<code>grangercausalitytests</code> are specifically used for time series analysis.</p>
-<div id="9c9eef0a" class="cell" data-execution_count="2">
+<div id="030b1814" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -369,11 +399,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="data-fetching" class="level2">
 <h2 class="anchored" data-anchor-id="data-fetching">Data Fetching</h2>
 <p>In this section, we extracted four datasets through API calls: Gender Inequality Index(GII), GDP Deflator, Nominal GDP, and Population.</p>
-<div id="8b74374a" class="cell" data-execution_count="3">
+<div id="d25299b0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">"data"</span>).mkdir(exist_ok<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e5806808" class="cell" data-execution_count="4">
+<div id="16b82bc6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load or fetch databases</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>databases <span class="op">=</span> load_or_fetch_databases()</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -533,78 +563,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">307</td>
+<td>IFS</td>
+<td>International Financial Statistics (IFS)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">308</td>
+<td>MFS</td>
+<td>Monetary and Financial Statistics (MFS)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">309</td>
 <td>RAFIT3P</td>
 <td>RA-FIT Round3 Completion and Participation Rates</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">308</td>
+<td data-quarto-table-cell-role="th">310</td>
 <td>FAS</td>
 <td>Financial Access Survey (FAS)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">309</td>
+<td data-quarto-table-cell-role="th">311</td>
 <td>FSI</td>
 <td>Financial Soundness Indicators (FSIs)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">310</td>
+<td data-quarto-table-cell-role="th">312</td>
 <td>FSIRE</td>
 <td>Financial Soundness Indicators: Reporting enti...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">311</td>
+<td data-quarto-table-cell-role="th">313</td>
 <td>BOPSDMXUSD</td>
 <td>Balance of Payments (BOP), Global SDMX (US Dol...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">312</td>
+<td data-quarto-table-cell-role="th">314</td>
 <td>NAMAIN_IDC_N</td>
 <td>System of National Accounts (SNA), NA_MAIN</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">313</td>
+<td data-quarto-table-cell-role="th">315</td>
 <td>GFSR</td>
 <td>Government Finance Statistics (GFS), Revenue</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">314</td>
+<td data-quarto-table-cell-role="th">316</td>
 <td>GFSSSUC</td>
 <td>Government Finance Statistics (GFS), Statement...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">315</td>
+<td data-quarto-table-cell-role="th">317</td>
 <td>GFSCOFOG</td>
 <td>Government Finance Statistics (GFS), Expenditu...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">316</td>
+<td data-quarto-table-cell-role="th">318</td>
 <td>GFSFALCS</td>
 <td>Government Finance Statistics (GFS), Financial...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">317</td>
+<td data-quarto-table-cell-role="th">319</td>
 <td>GFSIBS</td>
 <td>Government Finance Statistics (GFS), Integrate...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">318</td>
+<td data-quarto-table-cell-role="th">320</td>
 <td>GFSMAB</td>
 <td>Government Finance Statistics (GFS), Main Aggr...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">319</td>
+<td data-quarto-table-cell-role="th">321</td>
 <td>GFSE</td>
 <td>Government Finance Statistics (GFS), Expense</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">320</td>
-<td>IFS</td>
-<td>International Financial Statistics (IFS)</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">321</td>
-<td>MFS</td>
-<td>Monetary and Financial Statistics (MFS)</td>
 </tr>
 </tbody>
 </table>
@@ -613,50 +643,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Two databases were used: Gender Equality and International Financial Statistics (IFS).</p>
-<div id="9de70abc" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> [<span class="st">"GENDER_EQUALITY"</span>, <span class="st">"IFS"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {}</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch valid parameters for two datasets</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dataset <span class="kw">in</span> datasets:</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    params[dataset] <span class="op">=</span> load_or_fetch_parameters(dataset)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    valid_keys <span class="op">=</span> <span class="bu">list</span>(params[dataset].keys())</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Parameters for </span><span class="sc">{</span>dataset<span class="sc">}</span><span class="ss">: "</span>, valid_keys)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># view_dataframe_in_browser(params.get("IFS").get("indicator"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4d21be61" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>databases[databases[<span class="st">'database_id'</span>].isin([<span class="st">'GENDER_EQUALITY'</span>,<span class="st">'IFS'</span>])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">database_id</th>
+<th data-quarto-table-cell-role="th">description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">47</td>
+<td>GENDER_EQUALITY</td>
+<td>Gender Equality</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">307</td>
+<td>IFS</td>
+<td>International Financial Statistics (IFS)</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Parameters are dictionary key names to make requests from the databases. “freq” stands for Frequency, such as Annual, Monthly, or Quarterly. “ref_area” stands for Geogrpahical Area, such as US (United States), JP (Japan), and GB (United Kindom). “indicator” refers to the code representing a specific dataset in the database. For example, if we display all the indicators for IFS database, the GDP deflator dataset has an input code of “NGDP_D_SA_IX” with a full name description of Gross Domestic Product, Deflator, Seasonally Adjusted, Index.</p>
+<div id="17b0795a" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> [<span class="st">"GENDER_EQUALITY"</span>, <span class="st">"IFS"</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {}</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch valid parameters for two datasets</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dataset <span class="kw">in</span> datasets:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    params[dataset] <span class="op">=</span> load_or_fetch_parameters(dataset)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    valid_keys <span class="op">=</span> <span class="bu">list</span>(params[dataset].keys())</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Parameters for </span><span class="sc">{</span>dataset<span class="sc">}</span><span class="ss">: "</span>, valid_keys)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameters for GENDER_EQUALITY:  ['freq', 'ref_area', 'indicator']
 Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 </div>
 </div>
-<p>“freq” stands for Frequency, such as Annual, Monthly, or Quarterly. “ref_area” stands for Geogrpahical Area, such as US (United States), JP (Japan), and GB (United Kindom). “indicator” refers to the specific dataset in the database, including input code and description. For example, if we display all the indicators for IFS database, the GDP deflator dataset has an input code of “NGDP_D_SA_IX” with a full name description of Gross Domestic Product, Deflator, Seasonally Adjusted, Index.</p>
 <p>We paired the database with the specific dataset indicator to read and store the csv file.</p>
-<div id="ce6ab11a" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> {}</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dsets <span class="op">=</span> [(<span class="st">"GENDER_EQUALITY"</span>, <span class="st">"GE_GII"</span>), (<span class="st">"IFS"</span>, <span class="st">"NGDP_D_SA_IX"</span>), (<span class="st">"IFS"</span>, <span class="st">"NGDP_XDC"</span>), (<span class="st">"IFS"</span>, <span class="st">"LP_PE_NUM"</span>)]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dset <span class="kw">in</span> dsets:</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    datasets[dset[<span class="dv">0</span>] <span class="op">+</span> <span class="st">"."</span> <span class="op">+</span> dset[<span class="dv">1</span>]] <span class="op">=</span> load_or_fetch_dataset(dset[<span class="dv">0</span>], dset[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="b94c647e" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># "Gender Inequality Index"</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>GII <span class="op">=</span> <span class="st">"GENDER_EQUALITY.GE_GII"</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># "Gross Domestic Product, Deflator, Seasonally Adjusted, Index"</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>GDP_deflator <span class="op">=</span> <span class="st">"IFS.NGDP_D_SA_IX"</span></span>
+<div id="b90c7da8" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> {}</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dsets <span class="op">=</span> [(<span class="st">"GENDER_EQUALITY"</span>, <span class="st">"GE_GII"</span>), </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>(<span class="st">"IFS"</span>, <span class="st">"NGDP_D_SA_IX"</span>), </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">"IFS"</span>, <span class="st">"NGDP_XDC"</span>), </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">"IFS"</span>, <span class="st">"LP_PE_NUM"</span>)]</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># "Gross Domestic Product, Nominal, Domestic Currency"</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>GDP_nominal <span class="op">=</span> <span class="st">"IFS.NGDP_XDC"</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># "Population, Persons, Number of"</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>GDP_population <span class="op">=</span> <span class="st">"IFS.LP_PE_NUM"</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign the datasets to new variables so we don't change the originals</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>GII_data <span class="op">=</span> datasets[GII]</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data <span class="op">=</span> datasets[GDP_deflator]</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>GDP_nominal_data <span class="op">=</span> datasets[GDP_nominal]</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>GDP_population_data <span class="op">=</span> datasets[GDP_population]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dset <span class="kw">in</span> dsets:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    datasets[dset[<span class="dv">0</span>] <span class="op">+</span> <span class="st">"."</span> <span class="op">+</span> dset[<span class="dv">1</span>]] <span class="op">=</span> load_or_fetch_dataset(dset[<span class="dv">0</span>], dset[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="778a8b42" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># "Gender Inequality Index"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>GII <span class="op">=</span> <span class="st">"GENDER_EQUALITY.GE_GII"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># "Gross Domestic Product, Deflator, Seasonally Adjusted, Index"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>GDP_deflator <span class="op">=</span> <span class="st">"IFS.NGDP_D_SA_IX"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># "Gross Domestic Product, Nominal, Domestic Currency"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>GDP_nominal <span class="op">=</span> <span class="st">"IFS.NGDP_XDC"</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># "Population, Persons, Number of"</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>GDP_population <span class="op">=</span> <span class="st">"IFS.LP_PE_NUM"</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign the datasets to new variables so we don't change the originals</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>GII_data <span class="op">=</span> datasets[GII]</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data <span class="op">=</span> datasets[GDP_deflator]</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>GDP_nominal_data <span class="op">=</span> datasets[GDP_nominal]</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>GDP_population_data <span class="op">=</span> datasets[GDP_population]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="feature-engineering" class="level2">
@@ -664,37 +726,43 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <section id="data-cleaning" class="level3">
 <h3 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h3>
 <p>Since the GDP deflator was reported on a quarterly basis, we converted it to a yearly basis.</p>
-<div id="d1dc2cc1" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to keep only rows with a partial string match for "Q4" in the time_period column</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data <span class="op">=</span> GDP_deflator_data[GDP_deflator_data[<span class="st">'time_period'</span>].<span class="bu">str</span>.contains(<span class="st">"Q4"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3dba1339" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only rows with a partial string match for "Q4" in the time_period column</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data <span class="op">=</span> GDP_deflator_data[GDP_deflator_data</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>[<span class="st">'time_period'</span>].<span class="bu">str</span>.contains(<span class="st">"Q4"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8e4b5ba6" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the time_period into year and quarter and keep the year only</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data.loc[:, <span class="st">'time_period'</span>] <span class="op">=</span> GDP_deflator_data[<span class="st">'time_period'</span>].<span class="bu">str</span>[<span class="dv">0</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ce53318a" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the time_period into year and quarter and keep the year only</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data.loc[:, <span class="st">'time_period'</span>] <span class="op">=</span> GDP_deflator_data[<span class="st">'time_period'</span>].<span class="bu">str</span>[<span class="dv">0</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We made all the variables numeric.</p>
-<div id="8c5f2789" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> [GII_data, GDP_deflator_data, GDP_nominal_data, GDP_population_data]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, dataset <span class="kw">in</span> <span class="bu">enumerate</span>(datasets):    </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use .loc to modify the columns</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    datasets[i].loc[:, <span class="st">'obs_value'</span>] <span class="op">=</span> pd.to_numeric(datasets[i][<span class="st">'obs_value'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    datasets[i].loc[:, <span class="st">'time_period'</span>] <span class="op">=</span> pd.to_numeric(datasets[i][<span class="st">'time_period'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    datasets[i].loc[:, <span class="st">'unit_mult'</span>] <span class="op">=</span> pd.to_numeric(datasets[i][<span class="st">'unit_mult'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fc66fdf6" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> [GII_data, GDP_deflator_data, GDP_nominal_data, GDP_population_data]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, dataset <span class="kw">in</span> <span class="bu">enumerate</span>(datasets):    </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use .loc to modify the columns</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    datasets[i].loc[:, <span class="st">'obs_value'</span>] <span class="op">=</span> pd.to_numeric(datasets[i][<span class="st">'obs_value'</span>], </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    datasets[i].loc[:, <span class="st">'time_period'</span>] <span class="op">=</span> pd.to_numeric(datasets[i][<span class="st">'time_period'</span>], </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    datasets[i].loc[:, <span class="st">'unit_mult'</span>] <span class="op">=</span> pd.to_numeric(datasets[i][<span class="st">'unit_mult'</span>], </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    errors<span class="op">=</span><span class="st">'coerce'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="gii-percent-change-dependent-variable" class="level3">
 <h3 class="anchored" data-anchor-id="gii-percent-change-dependent-variable">GII Percent Change: Dependent Variable</h3>
 <p>We kept percents as decimals to make them easy to work with for calculation. Different countries have different baseline level of economic growth and gender equality. We calculated the percent change to make them comparable.</p>
-<div id="83a864ee" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate percent change for each ref_area</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># First, create a copy and reset the index to avoid duplicate index issues</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>GII_data_sorted <span class="op">=</span> GII_data.sort_values([<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>GII_data[<span class="st">'pct_change'</span>] <span class="op">=</span> GII_data_sorted.groupby(<span class="st">'ref_area'</span>)[<span class="st">'obs_value'</span>].pct_change()</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the updated dataset</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>GII_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="48">
+<p>Gender Inequality Index (GII) is a composite measure of gender inequality using three dimensions: reproducitve health, empowerment, and labor market. GII ranges from 0 to 1. While 0 indicates gender equality, 1 indicates gender inequality, possibly the worst outcome for one gender in all three dimensions.</p>
+<div id="d2bc1e87" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate percent change for each ref_area</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># First, create a copy and reset the index to avoid duplicate index issues</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>GII_data_sorted <span class="op">=</span> GII_data.sort_values(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>GII_data[<span class="st">'pct_change'</span>] <span class="op">=</span> GII_data_sorted.groupby(<span class="st">'ref_area'</span>)[<span class="st">'obs_value'</span>].pct_change()</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the updated dataset</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>GII_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
 <div>
 
 
@@ -775,13 +843,20 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 </div>
 </div>
 <p>We subset the data frame to keep only the columns we want:</p>
-<div id="43608962" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe with only the required columns</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>GII_data <span class="op">=</span> GII_data[[<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>, <span class="st">'pct_change'</span>]].copy()</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the new dataset</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>GII_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
+<div id="b9e4c59d" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe with only the required columns</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>GII_data <span class="op">=</span> GII_data[[<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>, <span class="st">'obs_value'</span>, <span class="st">'pct_change'</span>]].copy()</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>GII_data <span class="op">=</span> GII_data.rename(columns <span class="op">=</span> {</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ref_area'</span>: <span class="st">'Country'</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'time_period'</span>: <span class="st">'Time'</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'obs_value'</span>: <span class="st">'GII'</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'pct_change'</span>: <span class="st">'GII_change'</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the new dataset</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>GII_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
 <div>
 
 
@@ -789,9 +864,10 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ref_area</th>
-<th data-quarto-table-cell-role="th">time_period</th>
-<th data-quarto-table-cell-role="th">pct_change</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Time</th>
+<th data-quarto-table-cell-role="th">GII</th>
+<th data-quarto-table-cell-role="th">GII_change</th>
 </tr>
 </thead>
 <tbody>
@@ -799,30 +875,35 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td data-quarto-table-cell-role="th">0</td>
 <td>AF</td>
 <td>1990</td>
+<td>0.828244</td>
 <td>NaN</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>AF</td>
 <td>1991</td>
+<td>0.817706</td>
 <td>-0.015156</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>AF</td>
 <td>1992</td>
+<td>0.809806</td>
 <td>-0.016783</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>AF</td>
 <td>1993</td>
+<td>0.803078</td>
 <td>-0.012651</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>AF</td>
 <td>1994</td>
+<td>0.797028</td>
 <td>-0.013718</td>
 </tr>
 </tbody>
@@ -832,20 +913,21 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 </div>
 </div>
 </section>
-<section id="gdp-independent-variable" class="level3">
-<h3 class="anchored" data-anchor-id="gdp-independent-variable">GDP: Independent Variable</h3>
-<p>We kept the columns we want only for GDP-related datasets for easier table merging.</p>
-<div id="68a1b5b9" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GDP Deflator Dataset</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe with only the required columns</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data <span class="op">=</span> GDP_deflator_data[[<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>, <span class="st">'unit_mult'</span>, <span class="st">'obs_value'</span>]].copy()</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide obs_value by 100</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data[<span class="st">'obs_value'</span>] <span class="op">=</span> GDP_deflator_data[<span class="st">'obs_value'</span>] <span class="op">/</span> <span class="dv">100</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the new dataset</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="50">
+<section id="gdp-percent-change-independent-variable" class="level3">
+<h3 class="anchored" data-anchor-id="gdp-percent-change-independent-variable">GDP Percent Change: Independent Variable</h3>
+<p>Real GDP per capita is a measure of a country’s economic welfare or standard of living. It is a great tool comparing a country’s economic development compared to other economies. Due to dataset access issue, we calculated Real GDP per capita by the following formula using GDP Deflator, Nominal GDP, and Population data:</p>
+<p><span class="math inline">\(\text{Real GDP} = \frac{\text{Nominal GDP}}{\text{GDP Deflator Index}}\times 100\)</span></p>
+<p><span class="math inline">\(\text{Real GDP per capita} = \frac{\text{Real GDP}}{\text{Population}}\)</span></p>
+<p>GDP Deflator is a measure of price inflation and deflation with respect to a specific base year. The GDP deflator of a base year is equal to 100. A number of 200 indicates price inflation: the current year price of the good is twice its base year price. A number of 50 indicates price deflation: the current year price of the good is half its base year price. We kept the columns we want only for GDP-related datasets for easier table merging.</p>
+<div id="b242b880" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GDP Deflator Dataset</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe with only the required columns</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data <span class="op">=</span> GDP_deflator_data[</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>, <span class="st">'unit_mult'</span>, <span class="st">'obs_value'</span>]].copy()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the new dataset</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>GDP_deflator_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
 <div>
 
 
@@ -865,35 +947,35 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1990</td>
 <td>0</td>
-<td>0.732006</td>
+<td>73.200623</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
 <td>FI</td>
 <td>1991</td>
 <td>0</td>
-<td>0.739841</td>
+<td>73.984068</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">11</td>
 <td>FI</td>
 <td>1992</td>
 <td>0</td>
-<td>0.746543</td>
+<td>74.654309</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">15</td>
 <td>FI</td>
 <td>1993</td>
 <td>0</td>
-<td>0.756193</td>
+<td>75.619254</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">19</td>
 <td>FI</td>
 <td>1994</td>
 <td>0</td>
-<td>0.779373</td>
+<td>77.937293</td>
 </tr>
 </tbody>
 </table>
@@ -901,14 +983,16 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 </div>
 </div>
 </div>
-<div id="18a4ac38" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GDP Nominal Data</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe with only the required columns</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>GDP_nominal_data <span class="op">=</span> GDP_nominal_data[[<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>, <span class="st">'unit_mult'</span>,<span class="st">'obs_value'</span>]].copy()</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the new dataset</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>GDP_nominal_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="51">
+<p>Nominal GDP is the total value of all goods and services produced in a given time period. It is usually higher than Real GDP and does not take into account cost of living in different countries or price change due to inflation/deflation.</p>
+<div id="e5e3c708" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GDP Nominal Data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe with only the required columns</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>GDP_nominal_data <span class="op">=</span> GDP_nominal_data[</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>, <span class="st">'unit_mult'</span>,<span class="st">'obs_value'</span>]].copy()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the new dataset</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>GDP_nominal_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
 <div>
 
 
@@ -964,14 +1048,16 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 </div>
 </div>
 </div>
-<div id="1a8919df" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GDP Population Data </span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe with only the required columns</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>GDP_population_data <span class="op">=</span> GDP_population_data[[<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>, <span class="st">'unit_mult'</span>,<span class="st">'obs_value'</span>]].copy()</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the new dataset</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>GDP_population_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="52">
+<p>Population is the total number of people living in a country at a given time. This is where the “per capita” comes from. Real GDP is the total value of all goods and services produced in a country adjusted for inflation. Real GDP per capita is the total economic output per person in a country.</p>
+<div id="60b49a74" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GDP Population Data </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe with only the required columns</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>GDP_population_data <span class="op">=</span> GDP_population_data[</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>, <span class="st">'unit_mult'</span>,<span class="st">'obs_value'</span>]].copy()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the new dataset</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>GDP_population_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
 <div>
 
 
@@ -1027,180 +1113,33 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 </div>
 </div>
 </div>
-<div id="d2c724a8" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine all the datasets above for further calculation</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> pd.merge(pd.merge(GDP_deflator_data,GDP_nominal_data, on<span class="op">=</span>[<span class="st">'time_period'</span>, <span class="st">'ref_area'</span>], suffixes<span class="op">=</span>(<span class="st">'_index'</span>, <span class="st">'_nominal'</span>), how<span class="op">=</span><span class="st">'inner'</span>), GDP_population_data, on<span class="op">=</span>[<span class="st">'time_period'</span>, <span class="st">'ref_area'</span>], how<span class="op">=</span><span class="st">'inner'</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the GDP data in a web browser</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># view_dataframe_in_browser(merged_df)</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the dataset</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>merged_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ref_area</th>
-<th data-quarto-table-cell-role="th">time_period</th>
-<th data-quarto-table-cell-role="th">unit_mult_index</th>
-<th data-quarto-table-cell-role="th">obs_value_index</th>
-<th data-quarto-table-cell-role="th">unit_mult_nominal</th>
-<th data-quarto-table-cell-role="th">obs_value_nominal</th>
-<th data-quarto-table-cell-role="th">unit_mult</th>
-<th data-quarto-table-cell-role="th">obs_value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>FI</td>
-<td>1990</td>
-<td>0</td>
-<td>0.732006</td>
-<td>6</td>
-<td>90964.0</td>
-<td>3</td>
-<td>4996.220</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>FI</td>
-<td>1991</td>
-<td>0</td>
-<td>0.739841</td>
-<td>6</td>
-<td>86913.0</td>
-<td>3</td>
-<td>5019.134</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>FI</td>
-<td>1992</td>
-<td>0</td>
-<td>0.746543</td>
-<td>6</td>
-<td>84786.0</td>
-<td>3</td>
-<td>5044.928</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>FI</td>
-<td>1993</td>
-<td>0</td>
-<td>0.756193</td>
-<td>6</td>
-<td>85610.0</td>
-<td>3</td>
-<td>5071.782</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>FI</td>
-<td>1994</td>
-<td>0</td>
-<td>0.779373</td>
-<td>6</td>
-<td>90646.0</td>
-<td>3</td>
-<td>5097.090</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
+<div id="24a1a21e" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine all the datasets above for further calculation</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> pd.merge(pd.merge(GDP_deflator_data,GDP_nominal_data, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>on<span class="op">=</span>[<span class="st">'time_period'</span>, <span class="st">'ref_area'</span>], </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>suffixes<span class="op">=</span>(<span class="st">'_index'</span>, <span class="st">'_nominal'</span>), </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>how<span class="op">=</span><span class="st">'inner'</span>), </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>GDP_population_data, </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>on<span class="op">=</span>[<span class="st">'time_period'</span>, <span class="st">'ref_area'</span>], </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>how<span class="op">=</span><span class="st">'inner'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We want to adjust GDP data based on unit multiplier. Unit multiplier stands for the number of zeroes we need to add to the value column. For example, in 1950, the observed population data for country GA (Georgia) was 473.296. With a unit muliplier of 3, the adjusted population would be 473296.</p>
-<div id="69000353" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'adjusted_index'</span>] <span class="op">=</span> merged_df[<span class="st">'obs_value_index'</span>] <span class="op">*</span> (<span class="dv">10</span> <span class="op">**</span> (merged_df[<span class="st">'unit_mult_index'</span>]))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'adjusted_nominal'</span>] <span class="op">=</span> merged_df[<span class="st">'obs_value_nominal'</span>] <span class="op">*</span> (<span class="dv">10</span> <span class="op">**</span> (merged_df[<span class="st">'unit_mult_nominal'</span>]))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'adjusted_population'</span>] <span class="op">=</span> merged_df[<span class="st">'obs_value'</span>] <span class="op">*</span> (<span class="dv">10</span> <span class="op">**</span> (merged_df[<span class="st">'unit_mult'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="30b0cad0" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'adjusted_index'</span>] <span class="op">=</span> merged_df[<span class="st">'obs_value_index'</span>] <span class="op">*</span> (<span class="dv">10</span> <span class="op">**</span> (merged_df</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>[<span class="st">'unit_mult_index'</span>]))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'adjusted_nominal'</span>] <span class="op">=</span> merged_df[<span class="st">'obs_value_nominal'</span>] <span class="op">*</span> (<span class="dv">10</span> <span class="op">**</span> (merged_df</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>[<span class="st">'unit_mult_nominal'</span>]))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'adjusted_population'</span>] <span class="op">=</span> merged_df[<span class="st">'obs_value'</span>] <span class="op">*</span> (<span class="dv">10</span> <span class="op">**</span> (merged_df</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>[<span class="st">'unit_mult'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b4ca3f5b" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merged dataset</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe with only the required columns</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> merged_df[[<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>,<span class="st">'adjusted_nominal'</span>, <span class="st">'adjusted_index'</span>, <span class="st">'adjusted_population'</span>]].copy()</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the dataset</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>merged_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="55">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ref_area</th>
-<th data-quarto-table-cell-role="th">time_period</th>
-<th data-quarto-table-cell-role="th">adjusted_nominal</th>
-<th data-quarto-table-cell-role="th">adjusted_index</th>
-<th data-quarto-table-cell-role="th">adjusted_population</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>FI</td>
-<td>1990</td>
-<td>9.096400e+10</td>
-<td>0.732006</td>
-<td>4996220.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>FI</td>
-<td>1991</td>
-<td>8.691300e+10</td>
-<td>0.739841</td>
-<td>5019134.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>FI</td>
-<td>1992</td>
-<td>8.478600e+10</td>
-<td>0.746543</td>
-<td>5044928.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>FI</td>
-<td>1993</td>
-<td>8.561000e+10</td>
-<td>0.756193</td>
-<td>5071782.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>FI</td>
-<td>1994</td>
-<td>9.064600e+10</td>
-<td>0.779373</td>
-<td>5097090.0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p>We wanted to compute the Real GDP per capita.</p>
-<div id="9711409f" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Real GDP = (Nominal GDP / GDP Deflator Index)</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'Real_GDP_domestic'</span>] <span class="op">=</span> (merged_df[<span class="st">'adjusted_nominal'</span>] <span class="op">/</span> merged_df[<span class="st">'adjusted_index'</span>])</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Real GDP per Capita = Real GDP / Population</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'Real_GDP_per_capita'</span>] <span class="op">=</span> merged_df[<span class="st">'Real_GDP_domestic'</span>] <span class="op">/</span> merged_df[<span class="st">'adjusted_population'</span>]</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the results</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>merged_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ff967741" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merged dataset</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe with only the required columns</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> merged_df[[<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="st">'adjusted_nominal'</span>, <span class="st">'adjusted_index'</span>, <span class="st">'adjusted_population'</span>]].copy()</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the dataset</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>merged_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <div>
 
@@ -1214,8 +1153,6 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <th data-quarto-table-cell-role="th">adjusted_nominal</th>
 <th data-quarto-table-cell-role="th">adjusted_index</th>
 <th data-quarto-table-cell-role="th">adjusted_population</th>
-<th data-quarto-table-cell-role="th">Real_GDP_domestic</th>
-<th data-quarto-table-cell-role="th">Real_GDP_per_capita</th>
 </tr>
 </thead>
 <tbody>
@@ -1224,7 +1161,94 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1990</td>
 <td>9.096400e+10</td>
-<td>0.732006</td>
+<td>73.200623</td>
+<td>4996220.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>FI</td>
+<td>1991</td>
+<td>8.691300e+10</td>
+<td>73.984068</td>
+<td>5019134.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>FI</td>
+<td>1992</td>
+<td>8.478600e+10</td>
+<td>74.654309</td>
+<td>5044928.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>FI</td>
+<td>1993</td>
+<td>8.561000e+10</td>
+<td>75.619254</td>
+<td>5071782.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>FI</td>
+<td>1994</td>
+<td>9.064600e+10</td>
+<td>77.937293</td>
+<td>5097090.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>We wanted to compute the Real GDP per capita.</p>
+<div id="b3f82de4" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Real GDP = (Nominal GDP / GDP Deflator Index)*100</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'Real_GDP_domestic'</span>] <span class="op">=</span> (merged_df[<span class="st">'adjusted_nominal'</span>] <span class="op">/</span> merged_df[</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'adjusted_index'</span>])<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Real GDP per Capita = Real GDP / Population</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'Real_GDP_per_capita'</span>] <span class="op">=</span> merged_df[<span class="st">'Real_GDP_domestic'</span>] <span class="op">/</span> merged_df[</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'adjusted_population'</span>]</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> merged_df.rename(columns<span class="op">=</span> {</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ref_area"</span>: <span class="st">"Country"</span>,</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"time_period"</span>: <span class="st">"Time"</span>,</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"adjusted_nominal"</span>: <span class="st">"Nominal"</span>,</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"adjusted_index"</span>: <span class="st">"Deflator"</span>,</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"adjusted_population"</span>: <span class="st">"Population"</span>,</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Real_GDP_domestic"</span>: <span class="st">"Real GDP"</span>,</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Real_GDP_per_capita"</span>: <span class="st">"Real GDP per Capita"</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the results</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>merged_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Time</th>
+<th data-quarto-table-cell-role="th">Nominal</th>
+<th data-quarto-table-cell-role="th">Deflator</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Real GDP</th>
+<th data-quarto-table-cell-role="th">Real GDP per Capita</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>FI</td>
+<td>1990</td>
+<td>9.096400e+10</td>
+<td>73.200623</td>
 <td>4996220.0</td>
 <td>1.242667e+11</td>
 <td>24872.143699</td>
@@ -1234,7 +1258,7 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1991</td>
 <td>8.691300e+10</td>
-<td>0.739841</td>
+<td>73.984068</td>
 <td>5019134.0</td>
 <td>1.174753e+11</td>
 <td>23405.490395</td>
@@ -1244,7 +1268,7 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1992</td>
 <td>8.478600e+10</td>
-<td>0.746543</td>
+<td>74.654309</td>
 <td>5044928.0</td>
 <td>1.135715e+11</td>
 <td>22512.011198</td>
@@ -1254,7 +1278,7 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1993</td>
 <td>8.561000e+10</td>
-<td>0.756193</td>
+<td>75.619254</td>
 <td>5071782.0</td>
 <td>1.132119e+11</td>
 <td>22321.919259</td>
@@ -1264,7 +1288,7 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1994</td>
 <td>9.064600e+10</td>
-<td>0.779373</td>
+<td>77.937293</td>
 <td>5097090.0</td>
 <td>1.163063e+11</td>
 <td>22818.181344</td>
@@ -1276,16 +1300,17 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 </div>
 </div>
 <p>We calculated the percentage change in Real GDP per capita and put it in a new column.</p>
-<div id="a7395a2d" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate percent change for each ref_area</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="ss">f'GDP_change'</span>] <span class="op">=</span> merged_df.sort_values([<span class="st">'ref_area'</span>, <span class="st">'time_period'</span>]).groupby(<span class="st">'ref_area'</span>)[<span class="st">'Real_GDP_per_capita'</span>].pct_change()</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename dataset</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>GDP_data <span class="op">=</span> merged_df</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the dataset</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>GDP_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="57">
+<div id="f7cb0e08" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate percent change for each ref_area</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="ss">f'GDP_change'</span>] <span class="op">=</span> merged_df.sort_values([<span class="st">'Country'</span>, <span class="st">'Time'</span>]).groupby(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Country'</span>)[<span class="st">'Real GDP per Capita'</span>].pct_change()</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename dataset</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>GDP_data <span class="op">=</span> merged_df</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the dataset</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>GDP_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
 <div>
 
 
@@ -1293,13 +1318,13 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ref_area</th>
-<th data-quarto-table-cell-role="th">time_period</th>
-<th data-quarto-table-cell-role="th">adjusted_nominal</th>
-<th data-quarto-table-cell-role="th">adjusted_index</th>
-<th data-quarto-table-cell-role="th">adjusted_population</th>
-<th data-quarto-table-cell-role="th">Real_GDP_domestic</th>
-<th data-quarto-table-cell-role="th">Real_GDP_per_capita</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Time</th>
+<th data-quarto-table-cell-role="th">Nominal</th>
+<th data-quarto-table-cell-role="th">Deflator</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Real GDP</th>
+<th data-quarto-table-cell-role="th">Real GDP per Capita</th>
 <th data-quarto-table-cell-role="th">GDP_change</th>
 </tr>
 </thead>
@@ -1309,7 +1334,7 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1990</td>
 <td>9.096400e+10</td>
-<td>0.732006</td>
+<td>73.200623</td>
 <td>4996220.0</td>
 <td>1.242667e+11</td>
 <td>24872.143699</td>
@@ -1320,7 +1345,7 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1991</td>
 <td>8.691300e+10</td>
-<td>0.739841</td>
+<td>73.984068</td>
 <td>5019134.0</td>
 <td>1.174753e+11</td>
 <td>23405.490395</td>
@@ -1331,7 +1356,7 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1992</td>
 <td>8.478600e+10</td>
-<td>0.746543</td>
+<td>74.654309</td>
 <td>5044928.0</td>
 <td>1.135715e+11</td>
 <td>22512.011198</td>
@@ -1342,7 +1367,7 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1993</td>
 <td>8.561000e+10</td>
-<td>0.756193</td>
+<td>75.619254</td>
 <td>5071782.0</td>
 <td>1.132119e+11</td>
 <td>22321.919259</td>
@@ -1353,7 +1378,7 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td>FI</td>
 <td>1994</td>
 <td>9.064600e+10</td>
-<td>0.779373</td>
+<td>77.937293</td>
 <td>5097090.0</td>
 <td>1.163063e+11</td>
 <td>22818.181344</td>
@@ -1365,113 +1390,15 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 </div>
 </div>
 </div>
-<div id="3e2fc17e" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GII and GDP</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the datasets</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>combined_data <span class="op">=</span> pd.merge(GII_data, GDP_data, on<span class="op">=</span>[<span class="st">"ref_area"</span>, <span class="st">"time_period"</span>], how <span class="op">=</span> <span class="st">"inner"</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the combined dataset</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>combined_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="58">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ref_area</th>
-<th data-quarto-table-cell-role="th">time_period</th>
-<th data-quarto-table-cell-role="th">pct_change</th>
-<th data-quarto-table-cell-role="th">adjusted_nominal</th>
-<th data-quarto-table-cell-role="th">adjusted_index</th>
-<th data-quarto-table-cell-role="th">adjusted_population</th>
-<th data-quarto-table-cell-role="th">Real_GDP_domestic</th>
-<th data-quarto-table-cell-role="th">Real_GDP_per_capita</th>
-<th data-quarto-table-cell-role="th">GDP_change</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>AR</td>
-<td>2004</td>
-<td>-0.031904</td>
-<td>4.851153e+11</td>
-<td>0.409672</td>
-<td>38491970.0</td>
-<td>1.184155e+12</td>
-<td>30763.687776</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>AR</td>
-<td>2005</td>
-<td>-0.009444</td>
-<td>5.825382e+11</td>
-<td>0.470108</td>
-<td>38892924.0</td>
-<td>1.239159e+12</td>
-<td>31860.772776</td>
-<td>0.035662</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>AR</td>
-<td>2006</td>
-<td>-0.009401</td>
-<td>7.159043e+11</td>
-<td>0.526535</td>
-<td>39289876.0</td>
-<td>1.359651e+12</td>
-<td>34605.628084</td>
-<td>0.086152</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>AR</td>
-<td>2007</td>
-<td>-0.102661</td>
-<td>8.969801e+11</td>
-<td>0.629139</td>
-<td>39684303.0</td>
-<td>1.425727e+12</td>
-<td>35926.734575</td>
-<td>0.038176</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>AR</td>
-<td>2008</td>
-<td>0.013114</td>
-<td>1.149646e+12</td>
-<td>0.757753</td>
-<td>40080159.0</td>
-<td>1.517178e+12</td>
-<td>37853.600252</td>
-<td>0.053633</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div id="3da31745" class="cell" data-execution_count="22">
+<div id="f23567c3" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GII and GDP</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>combined_data <span class="op">=</span> combined_data.rename(columns <span class="op">=</span> {</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ref_area"</span>: <span class="st">"Country"</span>,</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"time_period"</span>: <span class="st">"Time"</span>,</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pct_change"</span>: <span class="st">"GII_change"</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the GDP data in a web browser</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># view_dataframe_in_browser(combined_data)</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the combined dataset</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>combined_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the datasets</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>combined_data <span class="op">=</span> pd.merge(GII_data, GDP_data, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>on<span class="op">=</span>[<span class="st">"Country"</span>, <span class="st">"Time"</span>], </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>how <span class="op">=</span> <span class="st">"inner"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the combined dataset</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>combined_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <div>
 
@@ -1482,12 +1409,13 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">Country</th>
 <th data-quarto-table-cell-role="th">Time</th>
+<th data-quarto-table-cell-role="th">GII</th>
 <th data-quarto-table-cell-role="th">GII_change</th>
-<th data-quarto-table-cell-role="th">adjusted_nominal</th>
-<th data-quarto-table-cell-role="th">adjusted_index</th>
-<th data-quarto-table-cell-role="th">adjusted_population</th>
-<th data-quarto-table-cell-role="th">Real_GDP_domestic</th>
-<th data-quarto-table-cell-role="th">Real_GDP_per_capita</th>
+<th data-quarto-table-cell-role="th">Nominal</th>
+<th data-quarto-table-cell-role="th">Deflator</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Real GDP</th>
+<th data-quarto-table-cell-role="th">Real GDP per Capita</th>
 <th data-quarto-table-cell-role="th">GDP_change</th>
 </tr>
 </thead>
@@ -1496,9 +1424,10 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td data-quarto-table-cell-role="th">0</td>
 <td>AR</td>
 <td>2004</td>
+<td>0.384086</td>
 <td>-0.031904</td>
 <td>4.851153e+11</td>
-<td>0.409672</td>
+<td>40.967215</td>
 <td>38491970.0</td>
 <td>1.184155e+12</td>
 <td>30763.687776</td>
@@ -1508,9 +1437,10 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td data-quarto-table-cell-role="th">1</td>
 <td>AR</td>
 <td>2005</td>
+<td>0.380790</td>
 <td>-0.009444</td>
 <td>5.825382e+11</td>
-<td>0.470108</td>
+<td>47.010787</td>
 <td>38892924.0</td>
 <td>1.239159e+12</td>
 <td>31860.772776</td>
@@ -1520,9 +1450,10 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td data-quarto-table-cell-role="th">2</td>
 <td>AR</td>
 <td>2006</td>
+<td>0.383600</td>
 <td>-0.009401</td>
 <td>7.159043e+11</td>
-<td>0.526535</td>
+<td>52.653540</td>
 <td>39289876.0</td>
 <td>1.359651e+12</td>
 <td>34605.628084</td>
@@ -1532,9 +1463,10 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td data-quarto-table-cell-role="th">3</td>
 <td>AR</td>
 <td>2007</td>
+<td>0.375883</td>
 <td>-0.102661</td>
 <td>8.969801e+11</td>
-<td>0.629139</td>
+<td>62.913856</td>
 <td>39684303.0</td>
 <td>1.425727e+12</td>
 <td>35926.734575</td>
@@ -1544,9 +1476,10 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <td data-quarto-table-cell-role="th">4</td>
 <td>AR</td>
 <td>2008</td>
+<td>0.376159</td>
 <td>0.013114</td>
 <td>1.149646e+12</td>
-<td>0.757753</td>
+<td>75.775286</td>
 <td>40080159.0</td>
 <td>1.517178e+12</td>
 <td>37853.600252</td>
@@ -1566,12 +1499,12 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <h3 class="anchored" data-anchor-id="scatterplot">Scatterplot</h3>
 <p>Scatterplot use dots to represent values of two numeric variables. The horizontal axis was the percent change in Real GDP per capita. The vertical axis was the percent change in Gender Inequality Index(GII). Different colors represented different countries. We used a linear regression line to display the overall pattern.</p>
 <p>Based on the scatterplot, it seemed like there was a slight positive relationship between GDP change and GII change as shown by the flat regression line. Gender inequality was decreasing (gender equality was improving) a little faster in country-years with low GDP growth and a little slower in country-years with high GDP growth.</p>
-<div id="3b42bcad" class="cell" data-execution_count="23">
+<div id="e09cd9d9" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop NAs</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>combined_data <span class="op">=</span> combined_data.dropna(subset<span class="op">=</span>[<span class="st">'GDP_change'</span>, <span class="st">'GII_change'</span>])</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data points</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">10</span>))</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> country <span class="kw">in</span> combined_data[<span class="st">'Country'</span>].unique():</span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    country_data <span class="op">=</span> combined_data[combined_data[<span class="st">'Country'</span>] <span class="op">==</span> country]</span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    plt.scatter(country_data[<span class="st">'GDP_change'</span>], country_data[<span class="st">'GII_change'</span>],</span>
@@ -1596,7 +1529,7 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="demo_files/figure-html/cell-24-output-1.png" width="1418" height="819" class="figure-img"></p>
+<p><img src="demo_files/figure-html/cell-24-output-1.png" width="674" height="523" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1611,31 +1544,39 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <p>FR: France</p>
 <p>MX: Mexico</p>
 <p>Based on the line plots, we saw GDP change and GII change have different patterns. For example, in Mexico, when there was a big change in real GDP per captia in 1995, the change in GII was pretty stable.</p>
-<div id="4653ac82" class="cell" data-execution_count="24">
+<div id="a72b959d" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time Series Line plot for a few key countries</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>selected_countries  <span class="op">=</span> [<span class="st">'US'</span>, <span class="st">'JP'</span>, <span class="st">'GB'</span>, <span class="st">'FR'</span>, <span class="st">'MX'</span>]</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>combined_data_selected <span class="op">=</span> combined_data[combined_data[<span class="st">'Country'</span>].isin(selected_countries)]</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the Plot Structure</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">10</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot change in real GDP per capita over time</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> combined_data_selected, x <span class="op">=</span> <span class="st">"Time"</span>, y <span class="op">=</span> <span class="st">"GDP_change"</span>, hue <span class="op">=</span> <span class="st">"Country"</span>, ax <span class="op">=</span> ax[<span class="dv">0</span>])</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Percent Change in Real GDP per Capita Over Time"</span>)</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">"Percent Change in Real GDP per Capita"</span>)</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot change in GII over time</span></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> combined_data_selected, x <span class="op">=</span> <span class="st">"Time"</span>, y <span class="op">=</span> <span class="st">"GII_change"</span>, hue <span class="op">=</span> <span class="st">"Country"</span>, ax <span class="op">=</span> ax[<span class="dv">1</span>])</span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Percent Change in GII over Time"</span>)</span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"Time"</span>)</span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">"GII"</span>)</span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout</span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> combined_data_selected, </span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Time"</span>, </span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"GDP_change"</span>, </span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>hue <span class="op">=</span> <span class="st">"Country"</span>, </span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> ax[<span class="dv">0</span>])</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Percent Change in Real GDP per Capita Over Time"</span>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">"Percent Change in Real GDP per Capita"</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot change in GII over time</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> combined_data_selected, </span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Time"</span>, </span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"GII_change"</span>, </span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>hue <span class="op">=</span> <span class="st">"Country"</span>, </span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> ax[<span class="dv">1</span>])</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Percent Change in GII over Time"</span>)</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"Time"</span>)</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">"GII"</span>)</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>plt.tight_layout</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="demo_files/figure-html/cell-25-output-1.png" width="1435" height="819" class="figure-img"></p>
+<p><img src="demo_files/figure-html/cell-25-output-1.png" width="683" height="523" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1645,23 +1586,24 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <h3 class="anchored" data-anchor-id="barplot">Barplot</h3>
 <p>We used a barplot to show average changes in GII and GDP percent change for each country to visualize regions where inequality was improving or worsening.</p>
 <p>This plot supported our previous observation how GII change seemed to be not be correlated with GDP change. We also saw that, for country SI, Solvenia, there seems to be a large improvement in gender inequality.</p>
-<div id="147ac9f5" class="cell" data-execution_count="25">
+<div id="6ae82c1f" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot using average GII and GDP change</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average change for each country</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>combined_data_avg <span class="op">=</span> combined_data.groupby(<span class="st">'Country'</span>)[[<span class="st">'GII_change'</span>,<span class="st">'GDP_change'</span>]].mean().reset_index()</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare to plot structure </span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">18</span>,<span class="dv">10</span>))</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the barplot</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>combined_data_avg.plot(kind <span class="op">=</span> <span class="st">'bar'</span>, x <span class="op">=</span> <span class="st">'Country'</span>)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Change'</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Country'</span>)</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'GII change'</span>, <span class="st">'GDP change'</span>])</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>plt.grid(axis <span class="op">=</span> <span class="st">'y'</span>)</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>combined_data_avg <span class="op">=</span> combined_data.groupby(<span class="st">'Country'</span>)[</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'GII_change'</span>,<span class="st">'GDP_change'</span>]].mean().reset_index()</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare to plot structure </span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">18</span>,<span class="dv">10</span>))</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the barplot</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>combined_data_avg.plot(kind <span class="op">=</span> <span class="st">'bar'</span>, x <span class="op">=</span> <span class="st">'Country'</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Change'</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Country'</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'GII change'</span>, <span class="st">'GDP change'</span>])</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>plt.grid(axis <span class="op">=</span> <span class="st">'y'</span>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 1728x960 with 0 Axes&gt;</code></pre>
 </div>
@@ -1678,30 +1620,37 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <h3 class="anchored" data-anchor-id="boxplot">Boxplot</h3>
 <p>We used boxplot to visualize the distribution of GDP and GII change by country, providing information about spread, median, and potential outliers. To provide a more informative view, we sequenced countries in an ascending order by the median of percent change in GDP.</p>
 <p>The boxplot displayed a slight upward trend with no obvious pattern between GDP and GII change. In coutries with higher GDP change median, they also tend to have a larger spread of the GDP change. The median of GII change remained stable regardless of the magnitude of GDP change, implying weak or no association between GDP and GII change. We observed a potential outlier for country SI, Solvenia, which may explained its large improvement in Gender inequality.</p>
-<div id="0b3bfbaa" class="cell" data-execution_count="26">
+<div id="d87de51b" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot for GII and GDP change</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt the dataframe to long format for combined boxplot</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>combined_data_melted <span class="op">=</span> combined_data.melt(id_vars<span class="op">=</span>[<span class="st">'Country'</span>], value_vars<span class="op">=</span>[<span class="st">'GII_change'</span>, <span class="st">'GDP_change'</span>], </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                                          var_name<span class="op">=</span><span class="st">'Change_Type'</span>, value_name<span class="op">=</span><span class="st">'Value'</span>)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>gdp_medians <span class="op">=</span> combined_data.groupby(<span class="st">'Country'</span>)[<span class="st">'GDP_change'</span>].median().sort_values()</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>combined_data_melted <span class="op">=</span> combined_data.melt(id_vars<span class="op">=</span>[<span class="st">'Country'</span>], </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>value_vars<span class="op">=</span>[<span class="st">'GII_change'</span>, <span class="st">'GDP_change'</span>], </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>var_name<span class="op">=</span><span class="st">'Change_Type'</span>, </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>value_name<span class="op">=</span><span class="st">'Value'</span>)</span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>combined_data_melted[<span class="st">'Country'</span>] <span class="op">=</span> pd.Categorical(combined_data_melted[<span class="st">'Country'</span>], categories<span class="op">=</span>gdp_medians.index, ordered<span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>gdp_medians <span class="op">=</span> combined_data.groupby(<span class="st">'Country'</span>)[<span class="st">'GDP_change'</span>].median().sort_values()</span>
 <span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the plot structure</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">10</span>))</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data <span class="op">=</span> combined_data_melted, x <span class="op">=</span> <span class="st">"Country"</span>, y <span class="op">=</span> <span class="st">'Value'</span>, hue <span class="op">=</span> <span class="st">'Change_Type'</span>)</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of GII and GDP change by Country'</span>)</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Country'</span>)</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Change'</span>)</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>plt.legend(title <span class="op">=</span> <span class="st">'Change Type'</span>)</span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>combined_data_melted[<span class="st">'Country'</span>] <span class="op">=</span> pd.Categorical(combined_data_melted[<span class="st">'Country'</span>], </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>categories<span class="op">=</span>gdp_medians.index, </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>ordered<span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the plot structure</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data <span class="op">=</span> combined_data_melted, </span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Country"</span>, </span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">'Value'</span>, </span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>hue <span class="op">=</span> <span class="st">'Change_Type'</span>)</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of GII and GDP change by Country'</span>)</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Country'</span>)</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Change'</span>)</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>plt.legend(title <span class="op">=</span> <span class="st">'Change Type'</span>)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="demo_files/figure-html/cell-27-output-1.png" width="1418" height="819" class="figure-img"></p>
+<p><img src="demo_files/figure-html/cell-27-output-1.png" width="677" height="523" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1712,36 +1661,43 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <p>We created a heatmap to show the relationship between GII and GDP change.</p>
 <p>A positive correlation coefficient indicates a positive relationship: the larger the GDP change, the larger the GII change. A negative correlation coefficient indicates a negative relationship: the larger the GDP change, the smaller the GII change. A correlation coefficient closer to 0 indicates there is weak or no relationship.</p>
 <p>Based on the numeric values in the plot, there was a moderately strong positive correlation between GII and GDP change for country Estonia(EE) and Ireland(IE).</p>
-<div id="266df467" class="cell" data-execution_count="27">
+<div id="648befe3" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the correlation</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>country_correlation <span class="op">=</span> combined_data.groupby(<span class="st">'Country'</span>)[[<span class="st">'GII_change'</span>, <span class="st">'GDP_change'</span>]].corr().iloc[<span class="dv">0</span>::<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>].reset_index(name<span class="op">=</span><span class="st">'Correlation'</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Put the correlation value in a matrix format</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> country_correlation.pivot(index<span class="op">=</span><span class="st">'Country'</span>, columns<span class="op">=</span><span class="st">'level_1'</span>, values<span class="op">=</span><span class="st">'Correlation'</span>)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for NaN values in the correlation matrix</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>correlation_matrix.fillna(<span class="dv">0</span>, inplace<span class="op">=</span><span class="va">True</span>)  <span class="co"># Replace NaNs with 0 or another value as appropriate</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>country_correlation <span class="op">=</span> combined_data.groupby(<span class="st">'Country'</span>)[</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'GII_change'</span>, <span class="st">'GDP_change'</span>]].corr().iloc[<span class="dv">0</span>::<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>].reset_index(name<span class="op">=</span><span class="st">'Correlation'</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Put the correlation value in a matrix format</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> country_correlation.pivot(index<span class="op">=</span><span class="st">'Country'</span>, </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>columns<span class="op">=</span><span class="st">'level_1'</span>, </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>values<span class="op">=</span><span class="st">'Correlation'</span>)</span>
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the plot structure</span></span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">12</span>))  <span class="co"># Adjust height to give more space for y-axis labels</span></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the heatmap</span></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, center<span class="op">=</span><span class="dv">0</span>, cbar_kws<span class="op">=</span>{<span class="st">"shrink"</span>: <span class="fl">.8</span>}, linewidths<span class="op">=</span><span class="fl">.5</span>)</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Enhance axis labels and title</span></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Heatmap for GII and GDP Change'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Variables'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Country'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Improve readability of y-axis labels</span></span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">12</span>)  <span class="co"># Adjust the font size for y-axis labels</span></span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for NaN values in the correlation matrix</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace NaNs with 0 or another value as appropriate</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>correlation_matrix.fillna(<span class="dv">0</span>, inplace<span class="op">=</span><span class="va">True</span>)  </span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the plot structure</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust height to give more space for y-axis labels</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">12</span>))  </span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the heatmap</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, center<span class="op">=</span><span class="dv">0</span>, </span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>cbar_kws<span class="op">=</span>{<span class="st">"shrink"</span>: <span class="fl">.8</span>}, </span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>linewidths<span class="op">=</span><span class="fl">.5</span>)</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Enhance axis labels and title</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Heatmap for GII and GDP Change'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Variables'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Country'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Improve readability of y-axis labels</span></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">12</span>)  <span class="co"># Adjust the font size for y-axis labels</span></span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="demo_files/figure-html/cell-28-output-1.png" width="1295" height="983" class="figure-img"></p>
+<p><img src="demo_files/figure-html/cell-28-output-1.png" width="663" height="983" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1753,21 +1709,120 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <section id="descriptive-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="descriptive-statistics">Descriptive Statistics</h3>
 <p>There was a total of 915 data points. The mean of the GII change in -0.0314868, which indicated the overall grand mean percent change in gender inequality index is -3.15%. The mean of the GDP change was 0.0234633, showing the overall grand mean percent change in real GDP per capita was 2.35%.</p>
-<div id="497aa2b3" class="cell" data-execution_count="28">
+<div id="b4d07632" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate summary statistics</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>descriptive_stats <span class="op">=</span> combined_data.describe()</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tabulate(descriptive_stats, headers<span class="op">=</span><span class="st">'keys'</span>, tablefmt<span class="op">=</span><span class="st">'github'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>|       |   GII_change |   adjusted_nominal |   adjusted_index |   adjusted_population |   Real_GDP_domestic |   Real_GDP_per_capita |   GDP_change |
-|-------|--------------|--------------------|------------------|-----------------------|---------------------|-----------------------|--------------|
-| count | 892          |      892           |      892         |         892           |       892           |         892           | 892          |
-| mean  |  -0.0217928  |        7.87576e+13 |        0.852849  |           4.52596e+07 |         7.6152e+13  |      994449           |   0.023761   |
-| std   |   0.0413772  |        6.07694e+14 |        0.211413  |           1.25789e+08 |         5.5827e+14  |           3.86259e+06 |   0.0420188  |
-| min   |  -0.552535   |        2.18714e+09 |        0.0360636 |      396324           |         5.21733e+09 |        1798.42        |  -0.285847   |
-| 25%   |  -0.0303228  |        1.08215e+11 |        0.73791   |           5.09268e+06 |         1.48253e+11 |       17173.4         |   0.00414482 |
-| 50%   |  -0.0112739  |        7.55228e+11 |        0.886025  |           1.03354e+07 |         1.00125e+12 |       35429.4         |   0.0222486  |
-| 75%   |  -0.00354882 |        2.51415e+12 |        1.00091   |           4.48045e+07 |         2.92126e+12 |      120734           |   0.0432811  |
-| max   |   0.210491   |        9.54613e+15 |        2.0788    |           1.28084e+09 |         7.92007e+15 |           3.14532e+07 |   0.241984   |</code></pre>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>combined_data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">GII</th>
+<th data-quarto-table-cell-role="th">GII_change</th>
+<th data-quarto-table-cell-role="th">Nominal</th>
+<th data-quarto-table-cell-role="th">Deflator</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Real GDP</th>
+<th data-quarto-table-cell-role="th">Real GDP per Capita</th>
+<th data-quarto-table-cell-role="th">GDP_change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>892.000000</td>
+<td>892.000000</td>
+<td>8.920000e+02</td>
+<td>892.000000</td>
+<td>8.920000e+02</td>
+<td>8.920000e+02</td>
+<td>8.920000e+02</td>
+<td>892.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>0.238283</td>
+<td>-0.021793</td>
+<td>7.875762e+13</td>
+<td>85.284857</td>
+<td>4.525963e+07</td>
+<td>7.615203e+13</td>
+<td>9.944487e+05</td>
+<td>0.023761</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>0.149491</td>
+<td>0.041377</td>
+<td>6.076941e+14</td>
+<td>21.141274</td>
+<td>1.257889e+08</td>
+<td>5.582701e+14</td>
+<td>3.862589e+06</td>
+<td>0.042019</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>0.011690</td>
+<td>-0.552535</td>
+<td>2.187139e+09</td>
+<td>3.606364</td>
+<td>3.963240e+05</td>
+<td>5.217326e+09</td>
+<td>1.798422e+03</td>
+<td>-0.285847</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>0.130384</td>
+<td>-0.030323</td>
+<td>1.082150e+11</td>
+<td>73.791006</td>
+<td>5.092682e+06</td>
+<td>1.482527e+11</td>
+<td>1.717335e+04</td>
+<td>0.004145</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>0.184177</td>
+<td>-0.011274</td>
+<td>7.552283e+11</td>
+<td>88.602462</td>
+<td>1.033540e+07</td>
+<td>1.001247e+12</td>
+<td>3.542943e+04</td>
+<td>0.022249</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>0.334285</td>
+<td>-0.003549</td>
+<td>2.514154e+12</td>
+<td>100.090790</td>
+<td>4.480447e+07</td>
+<td>2.921264e+12</td>
+<td>1.207343e+05</td>
+<td>0.043281</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>0.788954</td>
+<td>0.210491</td>
+<td>9.546134e+15</td>
+<td>207.880042</td>
+<td>1.280842e+09</td>
+<td>7.920071e+15</td>
+<td>3.145315e+07</td>
+<td>0.241984</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 </section>
@@ -1780,43 +1835,141 @@ Parameters for IFS:  ['freq', 'ref_area', 'indicator']</code></pre>
 <li><p>R-squared = 0.004. Only 0.4% of the variance in GII change could be explained by GDP change.</p></li>
 <li><p>We were 95% confident that the interval from -0.003 to 0.169 captured the true slope of GDP change. Because 0 was included, we are uncertain about the effect of GDP change on GII chnage.</p></li>
 </ul>
-<div id="20eff470" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define independent and depenent variables</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> combined_data[<span class="st">'GDP_change'</span>]</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> combined_data[<span class="st">'GII_change'</span>]</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a constant to indepdent variable to include an intercept</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X)</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a simple linear regresion model and print out the summary</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(y, X).fit()</span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:             GII_change   R-squared:                       0.000
-Model:                            OLS   Adj. R-squared:                 -0.001
-Method:                 Least Squares   F-statistic:                    0.1065
-Date:                Fri, 27 Dec 2024   Prob (F-statistic):              0.744
-Time:                        17:39:33   Log-Likelihood:                 1575.9
-No. Observations:                 892   AIC:                            -3148.
-Df Residuals:                     890   BIC:                            -3138.
-Df Model:                           1                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P&gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const         -0.0220      0.002    -13.845      0.000      -0.025      -0.019
-GDP_change     0.0108      0.033      0.326      0.744      -0.054       0.076
-==============================================================================
-Omnibus:                      867.158   Durbin-Watson:                   1.571
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):            61900.365
-Skew:                          -4.267   Prob(JB):                         0.00
-Kurtosis:                      42.908   Cond. No.                         23.8
-==============================================================================
+<div id="3d878ef8" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define independent and depenent variables</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> combined_data[<span class="st">'GDP_change'</span>]</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> combined_data[<span class="st">'GII_change'</span>]</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a constant to indepdent variable to include an intercept</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a simple linear regresion model and print out the summary</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(y, X).fit()</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="66">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>OLS Regression Results</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
+<td>GII_change</td>
+<td data-quarto-table-cell-role="th">R-squared:</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Model:</td>
+<td>OLS</td>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
+<td>-0.001</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Method:</td>
+<td>Least Squares</td>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
+<td>0.1065</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Date:</td>
+<td>Sun, 05 Jan 2025</td>
+<td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
+<td>0.744</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Time:</td>
+<td>12:27:35</td>
+<td data-quarto-table-cell-role="th">Log-Likelihood:</td>
+<td>1575.9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">No. Observations:</td>
+<td>892</td>
+<td data-quarto-table-cell-role="th">AIC:</td>
+<td>-3148.</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Df Residuals:</td>
+<td>890</td>
+<td data-quarto-table-cell-role="th">BIC:</td>
+<td>-3138.</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Df Model:</td>
+<td>1</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Covariance Type:</td>
+<td>nonrobust</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</code></pre>
+
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td></td>
+<td data-quarto-table-cell-role="th">coef</td>
+<td data-quarto-table-cell-role="th">std err</td>
+<td data-quarto-table-cell-role="th">t</td>
+<td data-quarto-table-cell-role="th">P&gt;|t|</td>
+<td data-quarto-table-cell-role="th">[0.025</td>
+<td data-quarto-table-cell-role="th">0.975]</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">const</td>
+<td>-0.0220</td>
+<td>0.002</td>
+<td>-13.845</td>
+<td>0.000</td>
+<td>-0.025</td>
+<td>-0.019</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">GDP_change</td>
+<td>0.0108</td>
+<td>0.033</td>
+<td>0.326</td>
+<td>0.744</td>
+<td>-0.054</td>
+<td>0.076</td>
+</tr>
+</tbody>
+</table>
+
+
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Omnibus:</td>
+<td>867.158</td>
+<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
+<td>1.571</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
+<td>0.000</td>
+<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
+<td>61900.365</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Skew:</td>
+<td>-4.267</td>
+<td data-quarto-table-cell-role="th">Prob(JB):</td>
+<td>0.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Kurtosis:</td>
+<td>42.908</td>
+<td data-quarto-table-cell-role="th">Cond. No.</td>
+<td>23.8</td>
+</tr>
+</tbody>
+</table>
+<br><br>Notes:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 </div>
 </div>
 </section>
@@ -1834,33 +1987,36 @@ Notes:
 <p>We wanted to use Augmented Dickey-Fuller (ADF) test to check whether a time series was stationary, which was the model assumption for many time series models.</p>
 <p>Stationarity implied constant mean and variance over time, making it more predictable and stable for forecasting.</p>
 <p>Based on the ADF test output, both GII and GDP change time series were stationary. We proceeded to the time series modeling section.</p>
-<div id="1b53552f" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Augmented Dickey-Fuller (ADF) test for stationarity check</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create melted datasets</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>combined_data_time <span class="op">=</span> combined_data.melt(id_vars<span class="op">=</span>[<span class="st">'Time'</span>, <span class="st">'Country'</span>], value_vars<span class="op">=</span>[<span class="st">'GII_change'</span>,<span class="st">'GDP_change'</span>], var_name <span class="op">=</span> <span class="st">'Change_Type'</span>, value_name <span class="op">=</span> <span class="st">'Value'</span>)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>GII <span class="op">=</span> combined_data_time[(combined_data_time[<span class="st">'Change_Type'</span>] <span class="op">==</span> <span class="st">'GII_change'</span>)]                         </span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>GDP <span class="op">=</span> combined_data_time[(combined_data_time[<span class="st">'Change_Type'</span>] <span class="op">==</span> <span class="st">'GDP_change'</span>)]</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Stationary Check</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adf_test(series):</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> adfuller(series.dropna())</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'ADF Statistic: </span><span class="sc">{</span>result[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'p-value: </span><span class="sc">{</span>result[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result[<span class="dv">1</span>] <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Series is stationary"</span>)</span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Series is not stationary"</span>)</span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the result</span></span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>adf_test(GII[<span class="st">'Value'</span>])</span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>adf_test(GDP[<span class="st">'Value'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4f5fd93b" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Augmented Dickey-Fuller (ADF) test for stationarity check</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create melted datasets</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>combined_data_time <span class="op">=</span> combined_data.melt(id_vars<span class="op">=</span>[<span class="st">'Time'</span>, <span class="st">'Country'</span>], </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>value_vars<span class="op">=</span>[<span class="st">'GII_change'</span>,<span class="st">'GDP_change'</span>], </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>var_name <span class="op">=</span> <span class="st">'Change_Type'</span>, </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>value_name <span class="op">=</span> <span class="st">'Value'</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>GII <span class="op">=</span> combined_data_time[(combined_data_time[<span class="st">'Change_Type'</span>] <span class="op">==</span> <span class="st">'GII_change'</span>)]                         </span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>GDP <span class="op">=</span> combined_data_time[(combined_data_time[<span class="st">'Change_Type'</span>] <span class="op">==</span> <span class="st">'GDP_change'</span>)]</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Stationary Check</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adf_test(series):</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> adfuller(series.dropna())</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'ADF Statistic: </span><span class="sc">{</span>result[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'p-value: </span><span class="sc">{</span>result[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result[<span class="dv">1</span>] <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Series is stationary"</span>)</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Series is not stationary"</span>)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the result</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>adf_test(GII[<span class="st">'Value'</span>])</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>adf_test(GDP[<span class="st">'Value'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>ADF Statistic: -13.235165843988412
-p-value: 9.410722393209802e-25
+<pre><code>ADF Statistic: -13.23516584398841
+p-value: 9.410722393210002e-25
 Series is stationary
-ADF Statistic: -13.53593861735856
-p-value: 2.567675334076584e-25
+ADF Statistic: -13.535938617358584
+p-value: 2.567675334076345e-25
 Series is stationary</code></pre>
 </div>
 </div>
@@ -1875,38 +2031,38 @@ Series is stationary</code></pre>
 <li><p>Past GII_change values significantly influenced current GII_change, as shown in the small p-values of lags 1 and 2.</p></li>
 <li><p>Lag 2 of GDP_change had a relatively low p-value but is not statistically significant.</p></li>
 </ul>
-<div id="71beb7c4" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the dataset into training and testing sets</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>split_ratio <span class="op">=</span> <span class="fl">0.7</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>split_index <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(combined_data) <span class="op">*</span> split_ratio)</span>
+<div id="9988a81a" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the dataset into training and testing sets</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>split_ratio <span class="op">=</span> <span class="fl">0.7</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>split_index <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(combined_data) <span class="op">*</span> split_ratio)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Training set is used to fit the model</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>train_data <span class="op">=</span> combined_data.iloc[:split_index]</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing set is used for validation</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> combined_data.iloc[split_index:]</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training data: </span><span class="sc">{</span>train_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test data: </span><span class="sc">{</span>test_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Training data: (624, 10)
+Test data: (268, 10)</code></pre>
+</div>
+</div>
+<div id="c9dc96d3" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a VAR model </span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>time_model <span class="op">=</span> VAR(train_data[[<span class="st">'GII_change'</span>, <span class="st">'GDP_change'</span>]])</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>time_model_fitted <span class="op">=</span> time_model.fit(maxlags <span class="op">=</span> <span class="dv">15</span>, ic<span class="op">=</span><span class="st">"aic"</span>)</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Training set is used to fit the model</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>train_data <span class="op">=</span> combined_data.iloc[:split_index]</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing set is used for validation</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> combined_data.iloc[split_index:]</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training data: </span><span class="sc">{</span>train_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test data: </span><span class="sc">{</span>test_data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Training data: (624, 9)
-Test data: (268, 9)</code></pre>
-</div>
-</div>
-<div id="a63770e4" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a VAR model </span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>time_model <span class="op">=</span> VAR(train_data[[<span class="st">'GII_change'</span>, <span class="st">'GDP_change'</span>]])</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>time_model_fitted <span class="op">=</span> time_model.fit(maxlags <span class="op">=</span> <span class="dv">15</span>, ic<span class="op">=</span><span class="st">"aic"</span>)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the model summary</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(time_model_fitted.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the model summary</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>time_model_fitted.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>  Summary of Regression Results   
 ==================================
 Model:                         VAR
 Method:                        OLS
-Date:           Fri, 27, Dec, 2024
-Time:                     17:39:34
+Date:           Sun, 05, Jan, 2025
+Time:                     12:27:35
 --------------------------------------------------------------------
 No. of Equations:         2.00000    BIC:                   -12.6392
 Nobs:                     621.000    HQIC:                  -12.7003
@@ -1943,62 +2099,58 @@ Correlation matrix of residuals
               GII_change  GDP_change
 GII_change      1.000000   -0.034159
 GDP_change     -0.034159    1.000000
-
-
 </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/chriscarrollsmith/.cache/pypoetry/virtualenvs/imfp-z9RgynLW-py3.12/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: An unsupported index was provided. As a result, forecasts cannot be generated. To use the model for forecasting, use one of the supported classes of index.
-  self._init_dates(dates, freq)</code></pre>
 </div>
 </div>
 </section>
 <section id="var-model-forecasting" class="level4">
 <h4 class="anchored" data-anchor-id="var-model-forecasting">VAR Model: Forecasting</h4>
 <p>We applied the model learned above to the test data. Based on the plot, the forecast values seem to follow the actual data well, indicating a good model fit caputuring the underlying trends.</p>
-<div id="0fe02858" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of steps to forecast (length of the test set)</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>n_steps <span class="op">=</span> <span class="bu">len</span>(test_data)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the last values from the training set for forecasting</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>forecast_input <span class="op">=</span> train_data[[<span class="st">'GII_change'</span>, <span class="st">'GDP_change'</span>]].values[<span class="op">-</span>time_model_fitted.k_ar:]</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Forecasting</span></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>forecast <span class="op">=</span> time_model_fitted.forecast(y<span class="op">=</span>forecast_input, steps<span class="op">=</span>n_steps)</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame for the forecasted values</span></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>forecast_df <span class="op">=</span> pd.DataFrame(forecast, index<span class="op">=</span>test_data.index, columns<span class="op">=</span>[<span class="st">'GII_forecast'</span>, <span class="st">'GDP_forecast'</span>])</span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure the index of the forecast_df matches the test_data index</span></span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>forecast_df.index <span class="op">=</span> test_data.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ffd6c9aa" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of steps to forecast (length of the test set)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>n_steps <span class="op">=</span> <span class="bu">len</span>(test_data)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the last values from the training set for forecasting</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>forecast_input <span class="op">=</span> train_data[</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'GII_change'</span>, <span class="st">'GDP_change'</span>]].values[<span class="op">-</span>time_model_fitted.k_ar:]</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Forecasting</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>forecast <span class="op">=</span> time_model_fitted.forecast(y<span class="op">=</span>forecast_input, steps<span class="op">=</span>n_steps)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame for the forecasted values</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>forecast_df <span class="op">=</span> pd.DataFrame(forecast, index<span class="op">=</span>test_data.index, </span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>columns<span class="op">=</span>[<span class="st">'GII_forecast'</span>, <span class="st">'GDP_forecast'</span>])</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure the index of the forecast_df matches the test_data index</span></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>forecast_df.index <span class="op">=</span> test_data.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f8969283" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>plt.plot(train_data[<span class="st">'GII_change'</span>], label<span class="op">=</span><span class="st">'Training GII'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>plt.plot(test_data[<span class="st">'GII_change'</span>], label<span class="op">=</span><span class="st">'Actual GII'</span>, color<span class="op">=</span><span class="st">'orange'</span>)</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>plt.plot(forecast_df[<span class="st">'GII_forecast'</span>], label<span class="op">=</span><span class="st">'Forecasted GII'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'GII Change Forecast vs Actual'</span>)</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>plt.plot(train_data[<span class="st">'GDP_change'</span>], label<span class="op">=</span><span class="st">'Training GDP'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>plt.plot(test_data[<span class="st">'GDP_change'</span>], label<span class="op">=</span><span class="st">'Actual GDP'</span>, color<span class="op">=</span><span class="st">'orange'</span>)</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>plt.plot(forecast_df[<span class="st">'GDP_forecast'</span>], label<span class="op">=</span><span class="st">'Forecasted GDP'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'GDP Change Forecast vs Actual'</span>)</span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="860e0082" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.plot(train_data[<span class="st">'GII_change'</span>], label<span class="op">=</span><span class="st">'Training GII'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>plt.plot(test_data[<span class="st">'GII_change'</span>], label<span class="op">=</span><span class="st">'Actual GII'</span>, color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>plt.plot(forecast_df[<span class="st">'GII_forecast'</span>], label<span class="op">=</span><span class="st">'Forecasted GII'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'GII Change Forecast vs Actual'</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>plt.plot(train_data[<span class="st">'GDP_change'</span>], label<span class="op">=</span><span class="st">'Training GDP'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>plt.plot(test_data[<span class="st">'GDP_change'</span>], label<span class="op">=</span><span class="st">'Actual GDP'</span>, color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>plt.plot(forecast_df[<span class="st">'GDP_forecast'</span>], label<span class="op">=</span><span class="st">'Forecasted GDP'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'GDP Change Forecast vs Actual'</span>)</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="demo_files/figure-html/cell-35-output-1.png" width="957" height="505" class="figure-img"></p>
+<p><img src="demo_files/figure-html/cell-35-output-1.png" width="664" height="505" class="figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="demo_files/figure-html/cell-35-output-2.png" width="957" height="505" class="figure-img"></p>
+<p><img src="demo_files/figure-html/cell-35-output-2.png" width="664" height="505" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -2007,26 +2159,28 @@ GDP_change     -0.034159    1.000000
 <section id="var-model-model-performance" class="level4">
 <h4 class="anchored" data-anchor-id="var-model-model-performance">VAR Model: Model Performance</h4>
 <p>Low values of both MAE and RMSE indicate good model performance with small average errors in predictions.</p>
-<div id="721b9019" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>mae_gii <span class="op">=</span> mean_absolute_error(test_data[<span class="st">'GII_change'</span>], forecast_df[<span class="st">'GII_forecast'</span>])</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>mae_gdp <span class="op">=</span> mean_absolute_error(test_data[<span class="st">'GDP_change'</span>], forecast_df[<span class="st">'GDP_forecast'</span>])</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Absolute Error for GII: </span><span class="sc">{</span>mae_gii<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Absolute Error for GDP: </span><span class="sc">{</span>mae_gdp<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="eac9df76" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mae_gii <span class="op">=</span> mean_absolute_error(test_data[<span class="st">'GII_change'</span>], forecast_df[<span class="st">'GII_forecast'</span>])</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>mae_gdp <span class="op">=</span> mean_absolute_error(test_data[<span class="st">'GDP_change'</span>], forecast_df[<span class="st">'GDP_forecast'</span>])</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Absolute Error for GII: </span><span class="sc">{</span>mae_gii<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Absolute Error for GDP: </span><span class="sc">{</span>mae_gdp<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean Absolute Error for GII: 0.02161276041747538
-Mean Absolute Error for GDP: 0.027925275568838715</code></pre>
+<pre><code>Mean Absolute Error for GII: 0.021612760417475375
+Mean Absolute Error for GDP: 0.02792527556883871</code></pre>
 </div>
 </div>
-<div id="849107a6" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>rmse_gii <span class="op">=</span> np.sqrt(mean_squared_error(test_data[<span class="st">'GII_change'</span>], forecast_df[<span class="st">'GII_forecast'</span>]))</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>rmse_gdp <span class="op">=</span> np.sqrt(mean_squared_error(test_data[<span class="st">'GDP_change'</span>], forecast_df[<span class="st">'GDP_forecast'</span>]))</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'RMSE for GII: </span><span class="sc">{</span>rmse_gii<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'RMSE for GDP: </span><span class="sc">{</span>rmse_gdp<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bf280050" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>rmse_gii <span class="op">=</span> np.sqrt(mean_squared_error(test_data[<span class="st">'GII_change'</span>], </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>forecast_df[<span class="st">'GII_forecast'</span>]))</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>rmse_gdp <span class="op">=</span> np.sqrt(mean_squared_error(test_data[<span class="st">'GDP_change'</span>], </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>forecast_df[<span class="st">'GDP_forecast'</span>]))</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'RMSE for GII: </span><span class="sc">{</span>rmse_gii<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'RMSE for GDP: </span><span class="sc">{</span>rmse_gdp<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>RMSE for GII: 0.040120750620236574
-RMSE for GDP: 0.03873101325357032</code></pre>
+<pre><code>RMSE for GII: 0.04012075062023657
+RMSE for GDP: 0.038731013253570326</code></pre>
 </div>
 </div>
 </section>
@@ -2034,10 +2188,11 @@ RMSE for GDP: 0.03873101325357032</code></pre>
 <h4 class="anchored" data-anchor-id="var-model-granger-causality-test">VAR Model: Granger causality test</h4>
 <p>Granger causality test evaluates whether one time series can predict another.</p>
 <p>Based on the output, the lowest p-value is when lag = 2. However, because p-value &gt; 0.05, we fail to reject the null hypothesis and conclude the GDP_change does not Granger-cause the GII_change.</p>
-<div id="96179a78" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the Granger causality test</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>max_lag <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>test_result <span class="op">=</span> grangercausalitytests(train_data[[<span class="st">'GII_change'</span>, <span class="st">'GDP_change'</span>]], max_lag, verbose<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1ab81faf" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the Granger causality test</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>max_lag <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>test_result <span class="op">=</span> grangercausalitytests(train_data[[<span class="st">'GII_change'</span>, <span class="st">'GDP_change'</span>]], max_lag,</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a> verbose<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Granger Causality
@@ -2061,17 +2216,19 @@ ssr based chi2 test:   chi2=2.0827  , p=0.5554  , df=3
 likelihood ratio test: chi2=2.0793  , p=0.5561  , df=3
 parameter F test:         F=0.6864  , p=0.5606  , df_denom=614, df_num=3</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/home/chriscarrollsmith/.cache/pypoetry/virtualenvs/imfp-z9RgynLW-py3.12/lib/python3.12/site-packages/statsmodels/tsa/stattools.py:1556: FutureWarning: verbose is deprecated since functions should not print results
-  warnings.warn(</code></pre>
-</div>
 </div>
 </section>
 </section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>In wrapping up our analysis, we found no evidence to support a significant relationship between the Change in Real GDP per capita and the Change in the Gender Inequality Index (GII). This suggests that economic growth may not have a direct impact on gender equality. However, our findings open the door to questions for future research. Check out the blog for full analysis!</p>
+<p>In wrapping up our analysis, we found no evidence to support a significant relationship between the Change in Real GDP per capita and the Change in the Gender Inequality Index (GII). This suggests that economic growth may not have a direct impact on gender equality. However, our findings open the door to questions for future research.</p>
+</section>
+<section id="future-directions" class="level2">
+<h2 class="anchored" data-anchor-id="future-directions">Future Directions</h2>
+<p>First, we must consider what other factors might influence the relationship between GDP and GII change. The GII is a composite index, shaped by a myriad of social factors, including cultural norms, legal frameworks, and environmental shifts. Future studies could benefit from incorporating additional predictors into the analysis and exploring the interaction between economic growth and gender equality within specific country contexts.</p>
+<p>Second, there’s potential to enhance the predictive power of our Vector Autoregression (VAR) time series model. While we established that GDP change does not cause GII change, our model performed well in forecasting trends for both variables independently. In practice, policymakers may want to forecast GII trends independently of GDP if they are implementing gender-focused policies. Future research could investigate time series modeling to further unravel the dynamics of GII and GDP changes.</p>
+<p>So, as we wrap up this chapter, let’s keep our curiosity alive and our questions flowing. After all, every end is just a new beginning in the quest for knowledge!</p>
 </section>
 <section id="about-the-author" class="level2">
 <h2 class="anchored" data-anchor-id="about-the-author">About the Author</h2>
@@ -2171,6 +2328,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -2281,6 +2440,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
