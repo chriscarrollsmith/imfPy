@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To install the stable version of imfp from PyPi, use pip.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-q</span> <span class="at">--upgrade</span> imfp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To load the library, use <code>import</code>:</p>
-<div id="6534cc4e" class="cell" data-execution_count="1">
+<div id="3eb2ae52" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imfp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="suggested-packages">Suggested packages</h3>
 <p><code>imfp</code> outputs data in a <code>pandas</code> data frame, so you will want to use the <code>pandas</code> package for its functions for viewing and manipulating this object type. I also recommend <code>matplotlib</code> or <code>seaborn</code> for making plots, and <code>numpy</code> for computation. These packages can be installed using <code>pip</code> and loaded using <code>import</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-q</span> pandas matplotlib seaborn numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="41c29ad2" class="cell" data-execution_count="2">
+<div id="17e6f2fc" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -229,11 +229,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="fetching-an-index-of-databases-with-the-imf_databases-function" class="level3">
 <h3 class="anchored" data-anchor-id="fetching-an-index-of-databases-with-the-imf_databases-function">Fetching an Index of Databases with the <code>imf_databases</code> Function</h3>
 <p>The <code>imfp</code> package introduces four core functions: <code>imfp.imf_databases</code>, <code>imfp.imf_parameters</code>, <code>imfp.imf_parameter_defs</code>, and <code>imfp.imf_dataset</code>. The function for downloading datasets is <code>imfp.imf_dataset</code>, but you will need the other functions to determine what arguments to supply to <code>imfp.imf_dataset</code>. For instance, all calls to <code>imfp.imf_dataset</code> require a <code>database_id</code>. This is because the IMF serves many different databases through its API, and the API needs to know which of these many databases you’re requesting data from. To obtain a list of databases, use <code>imfp.imf_databases</code>, like so:</p>
-<div id="ad9d710c" class="cell" data-execution_count="3">
+<div id="2e059395" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fetch the list of databases available through the IMF API</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>databases <span class="op">=</span> imfp.imf_databases()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>databases.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -279,10 +279,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This function returns the IMF’s listing of 259 databases available through the API. (In reality, 8 of the listed databases are defunct and not actually available: FAS_2015, GFS01, FM202010, APDREO202010, AFRREO202010, WHDREO202010, BOPAGG_2020, DOT_2020Q1.)</p>
 <p>To view and explore the database list, it’s possible to explore subsets of the data frame by row number with <code>databases.loc</code>:</p>
-<div id="2e584537" class="cell" data-execution_count="4">
+<div id="adc26141" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View a subset consisting of rows 5 through 9</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>databases.loc[<span class="dv">5</span>:<span class="dv">9</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -327,9 +327,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Or, if you already know which database you want, you can fetch the corresponding code by searching for a string match using <code>str.contains</code> and subsetting the data frame for matching rows. For instance, here’s how to search for commodities data:</p>
-<div id="33a8716c" class="cell" data-execution_count="5">
+<div id="75b8ca64" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>databases[databases[<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Commodity"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -363,23 +363,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="fetching-a-list-of-parameters-and-input-codes-with-imf_parameters-and-imf_parameter_defs">Fetching a List of Parameters and Input Codes with <code>imf_parameters</code> and <code>imf_parameter_defs</code></h3>
 <p>Once you have a <code>database_id</code>, it’s possible to make a call to <code>imfp.imf_dataset</code> to fetch the entire database: <code>imfp.imf_dataset(database_id)</code>. However, while this will succeed for a few small databases, it will fail for all of the larger ones. And even in the rare case when it succeeds, fetching an entire database can take a long time. You’re much better off supplying additional filter parameters to reduce the size of your request.</p>
 <p>Requests to databases available through the IMF API are complicated by the fact that each database uses a different set of parameters when making a request. (At last count, there were 43 unique parameters used in making API requests from the various databases!) You also have to have the list of valid input codes for each parameter. The <code>imfp.imf_parameters</code> function solves this problem. Use the function to obtain the full list of parameters and valid input codes for a given database:</p>
-<div id="2bcf95eb" class="cell" data-execution_count="6">
+<div id="4f930ec0" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch list of valid parameters and input codes for commodity price database</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> imfp.imf_parameters(<span class="st">"PCPS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>imfp.imf_parameters</code> function returns a dictionary of data frames. Each dictionary key name corresponds to a parameter used in making requests from the database:</p>
-<div id="f94c9d36" class="cell" data-execution_count="7">
+<div id="ee006155" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get key names from the params object</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>params.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>dict_keys(['freq', 'ref_area', 'commodity', 'unit_measure'])</code></pre>
 </div>
 </div>
 <p>In the event that a parameter name is not self-explanatory, the <code>imfp.imf_parameter_defs</code> function can be used to fetch short text descriptions of each parameter:</p>
-<div id="45e307d9" class="cell" data-execution_count="8">
+<div id="376c3138" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch and display parameter text descriptions for the commodity price database</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>imfp.imf_parameter_defs(<span class="st">"PCPS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -420,10 +420,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Each named list item is a data frame containing a vector of valid input codes that can be used with the named parameter, and a vector of text descriptions of what each code represents.</p>
 <p>To access the data frame containing valid values for each parameter, subset the <code>params</code> dict by the parameter name:</p>
-<div id="92dd2dc0" class="cell" data-execution_count="9">
+<div id="2cc2a40a" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data frame of valid input codes for the frequency parameter</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>params[<span class="st">'freq'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -462,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="viewing-data-frames">Viewing Data Frames</h3>
 <p>Note that <code>pandas</code> data frames in Python can be a little difficult to work with, because Python doesn’t have a built-in variable explorer. If you’re doing data science, I recommend using an IDE like RStudio or Spyder that has a built-in variable explorer. However, if you don’t have a variable explorer, you can prevent Python from truncating data frames using the <code>options</code> in <code>pandas</code>. For instance, to increase the maximum allowed column width to 100 characters, we can use <code>pandas.options.display.max_colwidth = 100</code>.</p>
 <p>Alternatively, it’s possible to open the data frame in a new window to view it in full:</p>
-<div id="27e3f103" class="cell" data-execution_count="10">
+<div id="d8eb5d45" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imfp</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tempfile</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> webbrowser</span>
@@ -486,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-list-arguments-workflow" class="level4">
 <h4 class="anchored" data-anchor-id="the-list-arguments-workflow">The List Arguments Workflow</h4>
 <p>To supply list arguments, just find the codes you want and supply them to <code>imfp.imf_dataset</code> using the parameter name as the argument name. The example below shows how to request 2000–2015 annual coal prices from the Primary Commodity Price System database:</p>
-<div id="53332bb0" class="cell" data-execution_count="11">
+<div id="f189a22e" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the 'freq' input code for annual frequency</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>selected_freq <span class="op">=</span> <span class="bu">list</span>(</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    params[<span class="st">'freq'</span>][<span class="st">'input_code'</span>][params[<span class="st">'freq'</span>][<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Annual"</span>)]</span>
@@ -510,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few entries in the retrieved data frame</span></span>
 <span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -594,7 +594,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-parameters-argument-workflow" class="level4">
 <h4 class="anchored" data-anchor-id="the-parameters-argument-workflow">The Parameters Argument Workflow</h4>
 <p>To supply a list object, modify each data frame in the <code>params</code> list object to retain only the rows you want, and then supply the modified list object to <code>imfp.imf_dataset</code> as its parameters argument. Here is how to make the same request for annual coal price data using a parameters list:</p>
-<div id="2a755544" class="cell" data-execution_count="12">
+<div id="4430db10" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the 'freq' input code for annual frequency</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>params[<span class="st">'freq'</span>] <span class="op">=</span> params[<span class="st">'freq'</span>][params[<span class="st">'freq'</span>][<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Annual"</span>)]</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -611,7 +611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few entries in the retrieved data frame</span></span>
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 
 
@@ -697,7 +697,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="working-with-the-returned-data-frame" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-the-returned-data-frame">Working with the Returned Data Frame</h2>
 <p>Note that all columns in the returned data frame are character vectors, and that to plot the series we will need to convert to valid numeric or date formats. Using <code>seaborn</code> with <code>hue</code>, we can plot different indicators in different colors:</p>
-<div id="7731f94a" class="cell" data-execution_count="13">
+<div id="b07d1778" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert obs_value to numeric and time_period to integer year</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.astype({<span class="st">"time_period"</span> : <span class="bu">int</span>, <span class="st">"obs_value"</span> : <span class="bu">float</span>})</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -714,7 +714,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Also note that the returned data frame has mysterious-looking codes as values in some columns.</p>
 <p>Codes in the <code>time_format</code> column are ISO 8601 duration codes. In this case, “P1Y” means “periods of 1 year.” The <code>unit_mult</code> column represents the number of zeroes you should add to the value column. For instance, if value is in millions, then the unit multiplier will be 6. If in billions, then the unit multiplier will be 9.</p>
 <p>The meanings of the other codes are stored in our <code>params</code> object and can be fetched with a join. For instance to fetch the meaning of the <code>ref_area</code> code “W00”, we can perform a left join with the <code>params['ref_area']</code> data frame and use select to replace <code>ref_area</code> with the parameter description:</p>
-<div id="5d1a658b" class="cell" data-execution_count="14">
+<div id="066c0d43" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join df with params['ref_area'] to fetch code description</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.merge(params[<span class="st">'ref_area'</span>], left_on<span class="op">=</span><span class="st">'ref_area'</span>,right_on<span class="op">=</span><span class="st">'input_code'</span>,how<span class="op">=</span><span class="st">'left'</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -723,7 +723,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View first few columns in the modified data frame</span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
@@ -811,7 +811,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>imfp.set_imf_app_name()</code> allows users to set a custom application name to be used when making API calls to the IMF API. The IMF API has an application-based rate limit of 50 requests per second, with the application identified by the “user_agent” variable in the request header.</p>
 <p>This could prove problematic if the <code>imfp</code> library became too popular and too many users tried to make simultaneous API requests using the default app name. By setting a custom application name, users can avoid hitting rate limits and being blocked by the API. <code>imfp.set_imf_app_name()</code> sets the application name by changing the <code>IMF_APP_NAME</code> variable in the environment. If this variable doesn’t exist, <code>imfp.set_imf_app_name()</code> will create it.</p>
 <p>To set a custom application name, simply call the <code>imfp.set_imf_app_name()</code> function with your desired application name as an argument:</p>
-<div id="8b6626cf" class="cell" data-execution_count="15">
+<div id="49d0f5f7" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set custom app name as an environment variable</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>imfp.set_imf_app_name(<span class="st">"my_custom_app_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
