@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>changelog – imfp</title>
+<title>Installation – imfp</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c75bcb89907db7808f0349b764a1a524.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">imfp</span>
     </a>
   </div>
@@ -88,11 +122,35 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Quickstart</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./docs/demo.html"> 
+    <a class="nav-link active" href="../docs/installation.html" aria-current="page"> 
+<span class="menu-text">Installation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../docs/databases.html"> 
+<span class="menu-text">Databases</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../docs/parameters.html"> 
+<span class="menu-text">Parameters</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../docs/datasets.html"> 
+<span class="menu-text">Datasets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../docs/usage.html"> 
+<span class="menu-text">Usage</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../docs/rate_limits.html"> 
+<span class="menu-text">Rate Limits</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../docs/demo.html"> 
 <span class="menu-text">Demo</span></a>
   </li>  
 </ul>
@@ -118,143 +176,72 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#changelog" id="toc-changelog" class="nav-link active" data-scroll-target="#changelog">CHANGELOG</a>
-  <ul class="collapse">
-  <li><a href="#v1.1.5" id="toc-v1.1.5" class="nav-link" data-scroll-target="#v1.1.5">v1.1.5</a></li>
-  <li><a href="#v1.1.4" id="toc-v1.1.4" class="nav-link" data-scroll-target="#v1.1.4">v1.1.4</a></li>
-  <li><a href="#v1.1.3" id="toc-v1.1.3" class="nav-link" data-scroll-target="#v1.1.3">v1.1.3</a></li>
-  <li><a href="#v1.1.2" id="toc-v1.1.2" class="nav-link" data-scroll-target="#v1.1.2">v1.1.2</a></li>
-  <li><a href="#v1.1.1" id="toc-v1.1.1" class="nav-link" data-scroll-target="#v1.1.1">v1.1.1</a></li>
-  <li><a href="#v1.1.0" id="toc-v1.1.0" class="nav-link" data-scroll-target="#v1.1.0">v1.1.0</a></li>
-  <li><a href="#v1.0.8" id="toc-v1.0.8" class="nav-link" data-scroll-target="#v1.0.8">v1.0.8</a></li>
-  <li><a href="#v1.0.7" id="toc-v1.0.7" class="nav-link" data-scroll-target="#v1.0.7">v1.0.7</a></li>
-  <li><a href="#v1.0.6" id="toc-v1.0.6" class="nav-link" data-scroll-target="#v1.0.6">v1.0.6</a></li>
-  <li><a href="#v1.0.5" id="toc-v1.0.5" class="nav-link" data-scroll-target="#v1.0.5">v1.0.5</a></li>
-  <li><a href="#v1.0.4" id="toc-v1.0.4" class="nav-link" data-scroll-target="#v1.0.4">v1.0.4</a></li>
-  <li><a href="#v1.0.3" id="toc-v1.0.3" class="nav-link" data-scroll-target="#v1.0.3">v1.0.3</a></li>
-  <li><a href="#v1.0.2" id="toc-v1.0.2" class="nav-link" data-scroll-target="#v1.0.2">v1.0.2</a></li>
-  <li><a href="#v1.0.1" id="toc-v1.0.1" class="nav-link" data-scroll-target="#v1.0.1">v1.0.1</a></li>
-  <li><a href="#v1.0.0" id="toc-v1.0.0" class="nav-link" data-scroll-target="#v1.0.0">v1.0.0</a></li>
-  </ul></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#suggested-dependencies-for-data-analysis" id="toc-suggested-dependencies-for-data-analysis" class="nav-link" data-scroll-target="#suggested-dependencies-for-data-analysis">Suggested Dependencies for Data Analysis</a></li>
+  <li><a href="#development-installation" id="toc-development-installation" class="nav-link" data-scroll-target="#development-installation">Development Installation</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Installation</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="changelog" class="level1">
-<h1>CHANGELOG</h1>
-<!-- version list -->
-<section id="v1.1.5" class="level2">
-<h2 class="anchored" data-anchor-id="v1.1.5">v1.1.5</h2>
-<ul>
-<li><p>Replaced poetry with uv package manager</p></li>
-<li><p>Added setuptools as build backend</p></li>
-</ul>
-</section>
-<section id="v1.1.4" class="level2">
-<h2 class="anchored" data-anchor-id="v1.1.4">v1.1.4</h2>
-<ul>
-<li><p>Added a demo project by Jenny Xu</p></li>
-<li><p>Updated dependencies</p></li>
-</ul>
-</section>
-<section id="v1.1.3" class="level2">
-<h2 class="anchored" data-anchor-id="v1.1.3">v1.1.3</h2>
-<ul>
-<li>Migrated from Sphinx to Quarto documentation</li>
-</ul>
-</section>
-<section id="v1.1.2" class="level2">
-<h2 class="anchored" data-anchor-id="v1.1.2">v1.1.2</h2>
-<ul>
-<li><p>Updated dependencies</p></li>
-<li><p>Required Python 3.10 and pandas 2.2 to prevent numpy binary incompatibility error</p></li>
-<li><p>Repaired broken tests badge in README.ipynb</p></li>
-</ul>
-</section>
-<section id="v1.1.1" class="level2">
-<h2 class="anchored" data-anchor-id="v1.1.1">v1.1.1</h2>
-<ul>
-<li><p>Updated dependencies</p></li>
-<li><p>Removed deprecated pkg_resources import</p></li>
-<li><p>Fixed a problem with pyproject.toml that was breaking CI/CD</p></li>
-<li><p>Implemented automated PyPi deployment with GitHub Actions</p></li>
-</ul>
-</section>
-<section id="v1.1.0" class="level2">
-<h2 class="anchored" data-anchor-id="v1.1.0">v1.1.0</h2>
-<ul>
-<li><p>Implemented response mocking during unit tests</p></li>
-<li><p>Removed between-calls wait time during unit tests</p></li>
-<li><p>Changed wait time variable from a global variable to an environment variable</p></li>
-<li><p>Introduced new <code>set_imf_wait_time</code> function</p></li>
-</ul>
-</section>
-<section id="v1.0.8" class="level2">
-<h2 class="anchored" data-anchor-id="v1.0.8">v1.0.8</h2>
-<ul>
-<li><p>Handled a case where, apparently, certain databases have required request parameters</p></li>
-<li><p>Added a couple experimental scripts for users who want to download whole databases; use at your own risk (of being blocked by the API)!</p></li>
-</ul>
-</section>
-<section id="v1.0.7" class="level2">
-<h2 class="anchored" data-anchor-id="v1.0.7">v1.0.7</h2>
-<ul>
-<li><p>Added error handling for the case where the user-specified parameter codes are valid, but the years are outside the dataset’s range</p></li>
-<li><p>Adjusted the regular expression used in passing through error messages from the API endpoint</p></li>
-</ul>
-</section>
-<section id="v1.0.6" class="level2">
-<h2 class="anchored" data-anchor-id="v1.0.6">v1.0.6</h2>
-<ul>
-<li><p>Corrected bug in URL handling when user omits one or more parameters</p></li>
-<li><p>Improved error handling to prevent confusing JSON decode errors from being passed to user</p></li>
-<li><p>Implemented formatting with <code>black</code> library</p></li>
-</ul>
-</section>
-<section id="v1.0.5" class="level2">
-<h2 class="anchored" data-anchor-id="v1.0.5">v1.0.5</h2>
-<ul>
-<li><p>Minor adjustments to project docs</p></li>
-<li><p>Linted unit tests</p></li>
-</ul>
-</section>
-<section id="v1.0.4" class="level2">
-<h2 class="anchored" data-anchor-id="v1.0.4">v1.0.4</h2>
-<ul>
-<li>Added <code>_imf_wait_time</code> variable for enhanced rate limit support</li>
-</ul>
-</section>
-<section id="v1.0.3" class="level2">
-<h2 class="anchored" data-anchor-id="v1.0.3">v1.0.3</h2>
-<ul>
-<li>Addressed bandwidth limit</li>
-</ul>
-</section>
-<section id="v1.0.2" class="level2">
-<h2 class="anchored" data-anchor-id="v1.0.2">v1.0.2</h2>
-<ul>
-<li>Fixed Python 3.11 async-related incompatibility problem</li>
-</ul>
-</section>
-<section id="v1.0.1" class="level2">
-<h2 class="anchored" data-anchor-id="v1.0.1">v1.0.1</h2>
-<ul>
-<li>README update</li>
-</ul>
-</section>
-<section id="v1.0.0" class="level2">
-<h2 class="anchored" data-anchor-id="v1.0.0">v1.0.0</h2>
-<ul>
-<li>Initial release of the first complete Python library for comprehensive access to the IMF API</li>
-</ul>
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<p>To install the latest version of <code>imfp</code>, you will need to have <a href="https://www.python.org/downloads/">Python 3.10 or later</a> installed on your system.</p>
+<p>If you don’t already have Python, we recommend installing <a href="https://astral.sh/setup-uv/">the <code>uv</code> package manager</a> and installing Python with <code>uv python install</code>.</p>
 </section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>To install the latest stable <code>imfp</code> wheel from PyPi using pip:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> imfp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alternatively, to install from the source code on Github, you can use the following command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> git+https://github.com/Promptly-Technologies-LLC/imfp.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can then import the package in your Python script:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imfp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="suggested-dependencies-for-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-dependencies-for-data-analysis">Suggested Dependencies for Data Analysis</h2>
+<p><code>imfp</code> outputs data in a <code>pandas</code> data frame, so you will want to use the <code>pandas</code> package for its functions for viewing and manipulating this object type. For data analysis and visualization, we recommend installing these additional packages:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-q</span> pandas matplotlib seaborn numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can then import them in your Python script:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="development-installation" class="level2">
+<h2 class="anchored" data-anchor-id="development-installation">Development Installation</h2>
+<p>To get started with development of <code>imfp</code>,</p>
+<ol type="1">
+<li><p>Fork and clone the repository</p></li>
+<li><p>Install <a href="https://astral.sh/setup-uv/">uv</a> with <code>curl -LsSf https://astral.sh/uv/install.sh | sh</code></p></li>
+<li><p>Install the dependencies with <code>uv sync</code></p></li>
+<li><p>Install a git pre-commit hook to enforce conventional commits:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-o-</span> https://raw.githubusercontent.com/tapsellorg/conventional-commits-git-hook/master/scripts/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p>To edit and preview the documentation, you’ll also want to install the <a href="https://quarto.org/docs/download/">Quarto CLI tool</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -340,6 +327,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -450,6 +439,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

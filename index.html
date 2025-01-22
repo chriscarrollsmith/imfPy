@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,10 +69,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c75bcb89907db7808f0349b764a1a524.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -126,7 +126,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+<span class="menu-text">Quickstart</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./docs/installation.html"> 
+<span class="menu-text">Installation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./docs/databases.html"> 
+<span class="menu-text">Databases</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./docs/parameters.html"> 
+<span class="menu-text">Parameters</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./docs/datasets.html"> 
+<span class="menu-text">Datasets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./docs/usage.html"> 
+<span class="menu-text">Usage</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./docs/rate_limits.html"> 
+<span class="menu-text">Rate Limits</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./docs/demo.html"> 
@@ -158,21 +182,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#imfp" id="toc-imfp" class="nav-link active" data-scroll-target="#imfp">imfp</a>
   <ul class="collapse">
   <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a>
   <ul class="collapse">
-  <li><a href="#suggested-packages" id="toc-suggested-packages" class="nav-link" data-scroll-target="#suggested-packages">Suggested packages</a></li>
-  <li><a href="#fetching-an-index-of-databases-with-the-imf_databases-function" id="toc-fetching-an-index-of-databases-with-the-imf_databases-function" class="nav-link" data-scroll-target="#fetching-an-index-of-databases-with-the-imf_databases-function">Fetching an Index of Databases with the <code>imf_databases</code> Function</a></li>
-  <li><a href="#fetching-a-list-of-parameters-and-input-codes-with-imf_parameters-and-imf_parameter_defs" id="toc-fetching-a-list-of-parameters-and-input-codes-with-imf_parameters-and-imf_parameter_defs" class="nav-link" data-scroll-target="#fetching-a-list-of-parameters-and-input-codes-with-imf_parameters-and-imf_parameter_defs">Fetching a List of Parameters and Input Codes with <code>imf_parameters</code> and <code>imf_parameter_defs</code></a></li>
-  <li><a href="#viewing-data-frames" id="toc-viewing-data-frames" class="nav-link" data-scroll-target="#viewing-data-frames">Viewing Data Frames</a></li>
-  <li><a href="#supplying-parameter-arguments-to-imf_dataset-a-tale-of-two-workflows" id="toc-supplying-parameter-arguments-to-imf_dataset-a-tale-of-two-workflows" class="nav-link" data-scroll-target="#supplying-parameter-arguments-to-imf_dataset-a-tale-of-two-workflows">Supplying Parameter Arguments to <code>imf_dataset</code>: A Tale of Two Workflows</a></li>
+  <li><a href="#fetching-a-list-of-databases-with-imf_databases" id="toc-fetching-a-list-of-databases-with-imf_databases" class="nav-link" data-scroll-target="#fetching-a-list-of-databases-with-imf_databases">Fetching a List of Databases with <code>imf_databases</code></a></li>
+  <li><a href="#fetching-a-list-of-parameters-and-input-codes-with-imf_parameters" id="toc-fetching-a-list-of-parameters-and-input-codes-with-imf_parameters" class="nav-link" data-scroll-target="#fetching-a-list-of-parameters-and-input-codes-with-imf_parameters">Fetching a List of Parameters and Input Codes with <code>imf_parameters</code></a></li>
+  <li><a href="#supplying-parameter-arguments-to-imf_dataset" id="toc-supplying-parameter-arguments-to-imf_dataset" class="nav-link" data-scroll-target="#supplying-parameter-arguments-to-imf_dataset">Supplying Parameter Arguments to <code>imf_dataset</code></a></li>
   </ul></li>
   <li><a href="#working-with-the-returned-data-frame" id="toc-working-with-the-returned-data-frame" class="nav-link" data-scroll-target="#working-with-the-returned-data-frame">Working with the Returned Data Frame</a></li>
-  <li><a href="#rate-and-bandwidth-limit-management" id="toc-rate-and-bandwidth-limit-management" class="nav-link" data-scroll-target="#rate-and-bandwidth-limit-management">Rate and Bandwidth Limit Management</a>
-  <ul class="collapse">
-  <li><a href="#setting-a-unique-application-name-with-set_imf_app_name" id="toc-setting-a-unique-application-name-with-set_imf_app_name" class="nav-link" data-scroll-target="#setting-a-unique-application-name-with-set_imf_app_name">Setting a Unique Application Name with <code>set_imf_app_name</code></a></li>
-  <li><a href="#changing-the-enforced-wait-time-between-api-calls-with-set_imf_wait_time" id="toc-changing-the-enforced-wait-time-between-api-calls-with-set_imf_wait_time" class="nav-link" data-scroll-target="#changing-the-enforced-wait-time-between-api-calls-with-set_imf_wait_time">Changing the enforced wait time between API calls with <code>set_imf_wait_time</code></a></li>
-  </ul></li>
-  <li><a href="#planned-features" id="toc-planned-features" class="nav-link" data-scroll-target="#planned-features">Planned features</a></li>
   <li><a href="#contributing" id="toc-contributing" class="nav-link" data-scroll-target="#contributing">Contributing</a></li>
   </ul></li>
   </ul>
@@ -202,228 +218,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="imfp" class="level1">
 <h1>imfp</h1>
-<p><a href="https://github.com/Promptly-Technologies-LLC/imfp/actions/workflows/main.yml"><img src="https://github.com/Promptly-Technologies-LLC/imfp/actions/workflows/main.yml/badge.svg" class="img-fluid" alt="Tests"></a> <a href="https://pypi.python.org/pypi/imfp"><img src="https://img.shields.io/pypi/v/imfp.svg" class="img-fluid" alt="PyPI Version"></a> <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg" class="img-fluid" alt="Code style: black"></a></p>
+<p><a href="https://github.com/Promptly-Technologies-LLC/imfp/actions/workflows/test.yml"><img src="https://github.com/Promptly-Technologies-LLC/imfp/actions/workflows/test.yml/badge.svg" class="img-fluid" alt="Tests"></a> <a href="https://pypi.python.org/pypi/imfp"><img src="https://img.shields.io/pypi/v/imfp.svg" class="img-fluid" alt="PyPI Version"></a> <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg" class="img-fluid" alt="Code style: black"></a></p>
 <p><code>imfp</code>, created and maintained by <a href="https://promptlytechnologies.com">Promptly Technologies</a>, is a Python package for downloading data from the <a href="http://data.imf.org/">International Monetary Fund’s</a> <a href="http://datahelp.imf.org/knowledgebase/articles/667681-using-json-restful-web-service">RESTful JSON API</a>.</p>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <p>To install the stable version of imfp from PyPi, use pip.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-q</span> <span class="at">--upgrade</span> imfp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To load the library, use <code>import</code>:</p>
-<div id="c53530b6" class="cell" data-execution_count="1">
+<div id="2fb95809" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imfp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage">Usage</h2>
-<section id="suggested-packages" class="level3">
-<h3 class="anchored" data-anchor-id="suggested-packages">Suggested packages</h3>
-<p><code>imfp</code> outputs data in a <code>pandas</code> data frame, so you will want to use the <code>pandas</code> package for its functions for viewing and manipulating this object type. I also recommend <code>matplotlib</code> or <code>seaborn</code> for making plots, and <code>numpy</code> for computation. These packages can be installed using <code>pip</code> and loaded using <code>import</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-q</span> pandas matplotlib seaborn numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="df4f31c6" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="workflow" class="level2">
+<h2 class="anchored" data-anchor-id="workflow">Workflow</h2>
+<p>The <code>imfp</code> package introduces four core functions: <code>imfp.imf_databases</code>, <code>imfp.imf_parameters</code>, <code>imfp.imf_parameter_defs</code>, and <code>imfp.imf_dataset</code>. The function for downloading datasets is <code>imfp.imf_dataset</code>, but you will need the other functions to determine what arguments to supply to <code>imfp.imf_dataset</code>.</p>
+<section id="fetching-a-list-of-databases-with-imf_databases" class="level3">
+<h3 class="anchored" data-anchor-id="fetching-a-list-of-databases-with-imf_databases">Fetching a List of Databases with <code>imf_databases</code></h3>
+<p>For instance, all calls to <code>imfp.imf_dataset</code> require a <code>database_id</code>. This is because the IMF serves many different databases through its API, and the API needs to know which of these many databases you’re requesting data from.</p>
+<p>To fetch a list of available databases, use:</p>
+<div id="b9febe9c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch list of available databases</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>databases <span class="op">=</span> imfp.imf_databases()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>See <a href="./docs/databases.html">Databases</a> for more information.</p>
 </section>
-<section id="fetching-an-index-of-databases-with-the-imf_databases-function" class="level3">
-<h3 class="anchored" data-anchor-id="fetching-an-index-of-databases-with-the-imf_databases-function">Fetching an Index of Databases with the <code>imf_databases</code> Function</h3>
-<p>The <code>imfp</code> package introduces four core functions: <code>imfp.imf_databases</code>, <code>imfp.imf_parameters</code>, <code>imfp.imf_parameter_defs</code>, and <code>imfp.imf_dataset</code>. The function for downloading datasets is <code>imfp.imf_dataset</code>, but you will need the other functions to determine what arguments to supply to <code>imfp.imf_dataset</code>. For instance, all calls to <code>imfp.imf_dataset</code> require a <code>database_id</code>. This is because the IMF serves many different databases through its API, and the API needs to know which of these many databases you’re requesting data from. To obtain a list of databases, use <code>imfp.imf_databases</code>, like so:</p>
-<div id="6c33baef" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fetch the list of databases available through the IMF API</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>databases <span class="op">=</span> imfp.imf_databases()</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>databases.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">database_id</th>
-<th data-quarto-table-cell-role="th">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>BOP_2017M06</td>
-<td>Balance of Payments (BOP), 2017 M06</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>BOP_2020M3</td>
-<td>Balance of Payments (BOP), 2020 M03</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>BOP_2017M11</td>
-<td>Balance of Payments (BOP), 2017 M11</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>DOT_2020Q1</td>
-<td>Direction of Trade Statistics (DOTS), 2020 Q1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>GFSMAB2016</td>
-<td>Government Finance Statistics Yearbook (GFSY 2...</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p>This function returns the IMF’s listing of 259 databases available through the API. (In reality, 8 of the listed databases are defunct and not actually available: FAS_2015, GFS01, FM202010, APDREO202010, AFRREO202010, WHDREO202010, BOPAGG_2020, DOT_2020Q1.)</p>
-<p>To view and explore the database list, it’s possible to explore subsets of the data frame by row number with <code>databases.loc</code>:</p>
-<div id="d46b66d1" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View a subset consisting of rows 5 through 9</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>databases.loc[<span class="dv">5</span>:<span class="dv">9</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">database_id</th>
-<th data-quarto-table-cell-role="th">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">5</td>
-<td>BOP_2019M12</td>
-<td>Balance of Payments (BOP), 2019 M12</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">6</td>
-<td>GFSYFALCS2014</td>
-<td>Government Finance Statistics Yearbook (GFSY 2...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">7</td>
-<td>GFSE2016</td>
-<td>Government Finance Statistics Yearbook (GFSY 2...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">8</td>
-<td>FM201510</td>
-<td>Fiscal Monitor (FM) October 2015</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">9</td>
-<td>GFSIBS2016</td>
-<td>Government Finance Statistics Yearbook (GFSY 2...</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p>Or, if you already know which database you want, you can fetch the corresponding code by searching for a string match using <code>str.contains</code> and subsetting the data frame for matching rows. For instance, here’s how to search for commodities data:</p>
-<div id="45f53f78" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>databases[databases[<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Commodity"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">database_id</th>
-<th data-quarto-table-cell-role="th">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">295</td>
-<td>PCTOT</td>
-<td>Commodity Terms of Trade</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">306</td>
-<td>PCPS</td>
-<td>Primary Commodity Price System (PCPS)</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</section>
-<section id="fetching-a-list-of-parameters-and-input-codes-with-imf_parameters-and-imf_parameter_defs" class="level3">
-<h3 class="anchored" data-anchor-id="fetching-a-list-of-parameters-and-input-codes-with-imf_parameters-and-imf_parameter_defs">Fetching a List of Parameters and Input Codes with <code>imf_parameters</code> and <code>imf_parameter_defs</code></h3>
-<p>Once you have a <code>database_id</code>, it’s possible to make a call to <code>imfp.imf_dataset</code> to fetch the entire database: <code>imfp.imf_dataset(database_id)</code>. However, while this will succeed for a few small databases, it will fail for all of the larger ones. And even in the rare case when it succeeds, fetching an entire database can take a long time. You’re much better off supplying additional filter parameters to reduce the size of your request.</p>
-<p>Requests to databases available through the IMF API are complicated by the fact that each database uses a different set of parameters when making a request. (At last count, there were 43 unique parameters used in making API requests from the various databases!) You also have to have the list of valid input codes for each parameter. The <code>imfp.imf_parameters</code> function solves this problem. Use the function to obtain the full list of parameters and valid input codes for a given database:</p>
-<div id="501536ba" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch list of valid parameters and input codes for commodity price database</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> imfp.imf_parameters(<span class="st">"PCPS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="fetching-a-list-of-parameters-and-input-codes-with-imf_parameters" class="level3">
+<h3 class="anchored" data-anchor-id="fetching-a-list-of-parameters-and-input-codes-with-imf_parameters">Fetching a List of Parameters and Input Codes with <code>imf_parameters</code></h3>
+<p>Requests to fetch data from IMF databases are complicated by the fact that each database uses a different set of parameters when making a request. (At last count, there were 43 unique parameters used in making API requests from the various databases!) You also have to have the list of valid input codes for each parameter.</p>
+<p>To obtain the full list of parameters and valid input codes for a given database, use:</p>
+<div id="2e9e43e7" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch list of valid parameters and input codes for commodity price database</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> imfp.imf_parameters(<span class="st">"PCPS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>imfp.imf_parameters</code> function returns a dictionary of data frames. Each dictionary key name corresponds to a parameter used in making requests from the database:</p>
-<div id="46bdb3a9" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get key names from the params object</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>params.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="84ee1116" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get key names from the params object</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>params.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>dict_keys(['freq', 'ref_area', 'commodity', 'unit_measure'])</code></pre>
 </div>
 </div>
-<p>In the event that a parameter name is not self-explanatory, the <code>imfp.imf_parameter_defs</code> function can be used to fetch short text descriptions of each parameter:</p>
-<div id="1030fea3" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch and display parameter text descriptions for the commodity price database</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>imfp.imf_parameter_defs(<span class="st">"PCPS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">parameter</th>
-<th data-quarto-table-cell-role="th">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>freq</td>
-<td>Frequency</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>ref_area</td>
-<td>Geographical Areas</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>commodity</td>
-<td>Indicator</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>unit_measure</td>
-<td>Unit</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p>Each named list item is a data frame containing a vector of valid input codes that can be used with the named parameter, and a vector of text descriptions of what each code represents.</p>
+<p>Each named list item is a data frame containing the valid input codes (and their descriptions) that can be used with the named parameter.</p>
 <p>To access the data frame containing valid values for each parameter, subset the <code>params</code> dict by the parameter name:</p>
-<div id="1b850d4d" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data frame of valid input codes for the frequency parameter</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>params[<span class="st">'freq'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="4de8db35" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data frame of valid input codes for the frequency parameter</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>params[<span class="st">'freq'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -458,59 +298,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="viewing-data-frames" class="level3">
-<h3 class="anchored" data-anchor-id="viewing-data-frames">Viewing Data Frames</h3>
-<p>Note that <code>pandas</code> data frames in Python can be a little difficult to work with, because Python doesn’t have a built-in variable explorer. If you’re doing data science, I recommend using an IDE like RStudio or Spyder that has a built-in variable explorer. However, if you don’t have a variable explorer, you can prevent Python from truncating data frames using the <code>options</code> in <code>pandas</code>. For instance, to increase the maximum allowed column width to 100 characters, we can use <code>pandas.options.display.max_colwidth = 100</code>.</p>
-<p>Alternatively, it’s possible to open the data frame in a new window to view it in full:</p>
-<div id="cd37101e" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imfp</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tempfile</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> webbrowser</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a simple function to view data frame in a browser window</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> View(df):</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    html <span class="op">=</span> df.to_html()</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> tempfile.NamedTemporaryFile(<span class="st">'w'</span>, delete<span class="op">=</span><span class="va">False</span>, suffix<span class="op">=</span><span class="st">'.html'</span>) <span class="im">as</span> f:</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        url <span class="op">=</span> <span class="st">'file://'</span> <span class="op">+</span> f.name</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        f.write(html)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    webbrowser.<span class="bu">open</span>(url)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Open data frame in a new browser window using the function</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> imfp.imf_databases()</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>View(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="supplying-parameter-arguments-to-imf_dataset" class="level3">
+<h3 class="anchored" data-anchor-id="supplying-parameter-arguments-to-imf_dataset">Supplying Parameter Arguments to <code>imf_dataset</code></h3>
+<p>To make a request to fetch data from the IMF API, just call <code>imfp.imf_dataset</code> with the database ID and keyword arguments for each parameter, where the keyword argument name is the parameter name and the value is the list of codes you want.</p>
+<p>For instance, on exploring the <code>freq</code> parameter of the Primary Commodity Price System database above, we found that the frequency can take one of three values: “A” for annual, “Q” for quarterly, and “M” for monthly. Thus, to request annual data, we can call <code>imfp.imf_dataset</code> with <code>freq = ["A"]</code>.</p>
+<p>Similarly, we might search the dataframes of valid input codes for the <code>commodity</code> and <code>unit_measure</code> parameters to find the input codes for coal and index:</p>
+<div id="33da8623" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the 'commodity' input code for coal</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    params[<span class="st">'commodity'</span>]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        .loc[params[<span class="st">'commodity'</span>][<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Coal"</span>)]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   input_code                                    description
+14      PCOAL          Primary Commodity Prices, Coal index 
+15    PCOALAU      Primary Commodity Prices, Coal, Australia
+16    PCOALSA  Primary Commodity Prices, Coal, South Africa </code></pre>
 </div>
-</section>
-<section id="supplying-parameter-arguments-to-imf_dataset-a-tale-of-two-workflows" class="level3">
-<h3 class="anchored" data-anchor-id="supplying-parameter-arguments-to-imf_dataset-a-tale-of-two-workflows">Supplying Parameter Arguments to <code>imf_dataset</code>: A Tale of Two Workflows</h3>
-<p>There are two ways to supply parameters to <code>imfp.imf_dataset</code>: by supplying list arguments or by supplying a modified parameters dict. The list arguments workflow will be more intuitive for most users, but the dict argument workflow requires a little less code.</p>
-<section id="the-list-arguments-workflow" class="level4">
-<h4 class="anchored" data-anchor-id="the-list-arguments-workflow">The List Arguments Workflow</h4>
-<p>To supply list arguments, just find the codes you want and supply them to <code>imfp.imf_dataset</code> using the parameter name as the argument name. The example below shows how to request 2000–2015 annual coal prices from the Primary Commodity Price System database:</p>
-<div id="b0b3f9c4" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the 'freq' input code for annual frequency</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>selected_freq <span class="op">=</span> <span class="bu">list</span>(</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    params[<span class="st">'freq'</span>][<span class="st">'input_code'</span>][params[<span class="st">'freq'</span>][<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Annual"</span>)]</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the 'commodity' input code for coal</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>selected_commodity <span class="op">=</span> <span class="bu">list</span>(</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    params[<span class="st">'commodity'</span>][<span class="st">'input_code'</span>][params[<span class="st">'commodity'</span>][<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Coal"</span>)]</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the 'unit_measure' input code for index</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>selected_unit_measure <span class="op">=</span> <span class="bu">list</span>(</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    params[<span class="st">'unit_measure'</span>][<span class="st">'input_code'</span>][params[<span class="st">'unit_measure'</span>][<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Index"</span>)]</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Request data from the API</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> imfp.imf_dataset(database_id <span class="op">=</span> <span class="st">"PCPS"</span>,</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>         freq <span class="op">=</span> selected_freq, commodity <span class="op">=</span> selected_commodity,</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>         unit_measure <span class="op">=</span> selected_unit_measure,</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>         start_year <span class="op">=</span> <span class="dv">2000</span>, end_year <span class="op">=</span> <span class="dv">2015</span>)</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few entries in the retrieved data frame</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+</div>
+<div id="d1e21d9e" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the 'unit_measure' input code for index</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    params[<span class="st">'unit_measure'</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        .loc[params[<span class="st">'unit_measure'</span>][<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Index"</span>)]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  input_code description
+0         IX       Index</code></pre>
+</div>
+</div>
+<p>Finally, we can use the information we’ve gathered to make the request to fetch the data:</p>
+<div id="5e58ff2b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Request data from the API</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> imfp.imf_dataset(database_id <span class="op">=</span> <span class="st">"PCPS"</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>         freq <span class="op">=</span> [<span class="st">"A"</span>], commodity <span class="op">=</span> [<span class="st">"PCOAL"</span>],</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         unit_measure <span class="op">=</span> [<span class="st">"IX"</span>],</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>         start_year <span class="op">=</span> <span class="dv">2000</span>, end_year <span class="op">=</span> <span class="dv">2015</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few entries in the retrieved data frame</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -590,252 +417,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="the-parameters-argument-workflow" class="level4">
-<h4 class="anchored" data-anchor-id="the-parameters-argument-workflow">The Parameters Argument Workflow</h4>
-<p>To supply a list object, modify each data frame in the <code>params</code> list object to retain only the rows you want, and then supply the modified list object to <code>imfp.imf_dataset</code> as its parameters argument. Here is how to make the same request for annual coal price data using a parameters list:</p>
-<div id="bc99b3bc" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the 'freq' input code for annual frequency</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>params[<span class="st">'freq'</span>] <span class="op">=</span> params[<span class="st">'freq'</span>][params[<span class="st">'freq'</span>][<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Annual"</span>)]</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the 'commodity' input code(s) for coal</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>params[<span class="st">'commodity'</span>] <span class="op">=</span> params[<span class="st">'commodity'</span>][params[<span class="st">'commodity'</span>][<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Coal"</span>)]</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the 'unit_measure' input code for index</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>params[<span class="st">'unit_measure'</span>] <span class="op">=</span> params[<span class="st">'unit_measure'</span>][params[<span class="st">'unit_measure'</span>][<span class="st">'description'</span>].<span class="bu">str</span>.contains(<span class="st">"Index"</span>)]</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Request data from the API</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> imfp.imf_dataset(database_id <span class="op">=</span> <span class="st">"PCPS"</span>,</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>         parameters <span class="op">=</span> params,</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>         start_year <span class="op">=</span> <span class="dv">2000</span>, end_year <span class="op">=</span> <span class="dv">2015</span>)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few entries in the retrieved data frame</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">freq</th>
-<th data-quarto-table-cell-role="th">ref_area</th>
-<th data-quarto-table-cell-role="th">commodity</th>
-<th data-quarto-table-cell-role="th">unit_measure</th>
-<th data-quarto-table-cell-role="th">unit_mult</th>
-<th data-quarto-table-cell-role="th">time_format</th>
-<th data-quarto-table-cell-role="th">time_period</th>
-<th data-quarto-table-cell-role="th">obs_value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>A</td>
-<td>W00</td>
-<td>PCOAL</td>
-<td>IX</td>
-<td>0</td>
-<td>P1Y</td>
-<td>2000</td>
-<td>39.3510230293202</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>A</td>
-<td>W00</td>
-<td>PCOAL</td>
-<td>IX</td>
-<td>0</td>
-<td>P1Y</td>
-<td>2001</td>
-<td>49.3378587284039</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>A</td>
-<td>W00</td>
-<td>PCOAL</td>
-<td>IX</td>
-<td>0</td>
-<td>P1Y</td>
-<td>2002</td>
-<td>39.4949091648006</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>A</td>
-<td>W00</td>
-<td>PCOAL</td>
-<td>IX</td>
-<td>0</td>
-<td>P1Y</td>
-<td>2003</td>
-<td>43.2878876950788</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>A</td>
-<td>W00</td>
-<td>PCOAL</td>
-<td>IX</td>
-<td>0</td>
-<td>P1Y</td>
-<td>2004</td>
-<td>82.9185858052862</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</section>
+<p>The returned data frame has a <code>time_format</code> column that contains ISO 8601 duration codes. In this case, “P1Y” means “periods of 1 year.” The <code>unit_mult</code> column represents the power of 10 to which the value column should be raised. For instance, if value is in millions, then the unit multiplier will be 6 (meaning 10^6). If in billions, then the unit multiplier will be 9 (meaning 10^9). For more information on interpreting the returned data frame, see <a href="./docs/usage.html#understanding-the-data-frame">Understanding the Data Frame</a>.</p>
 </section>
 </section>
 <section id="working-with-the-returned-data-frame" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-the-returned-data-frame">Working with the Returned Data Frame</h2>
-<p>Note that all columns in the returned data frame are character vectors, and that to plot the series we will need to convert to valid numeric or date formats. Using <code>seaborn</code> with <code>hue</code>, we can plot different indicators in different colors:</p>
-<div id="f43452e3" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert obs_value to numeric and time_period to integer year</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.astype({<span class="st">"time_period"</span> : <span class="bu">int</span>, <span class="st">"obs_value"</span> : <span class="bu">float</span>})</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot prices of different commodities in different colors with seaborn</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'time_period'</span>, y<span class="op">=</span><span class="st">'obs_value'</span>, hue<span class="op">=</span><span class="st">'commodity'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that all columns in the returned data frame are character vectors, and that to plot the series we will need to convert to valid numeric or date formats:</p>
+<div id="b525a9ed" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert obs_value to numeric and time_period to integer year</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.astype({<span class="st">"time_period"</span> : <span class="bu">int</span>, <span class="st">"obs_value"</span> : <span class="bu">float</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, using <code>seaborn</code> with <code>hue</code>, we can plot different indicators in different colors:</p>
+<div id="eba0d0a8" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot prices of different commodities in different colors with seaborn</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'time_period'</span>, y<span class="op">=</span><span class="st">'obs_value'</span>, hue<span class="op">=</span><span class="st">'commodity'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-14-output-1.png" width="593" height="429" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-11-output-1.png" width="593" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Also note that the returned data frame has mysterious-looking codes as values in some columns.</p>
-<p>Codes in the <code>time_format</code> column are ISO 8601 duration codes. In this case, “P1Y” means “periods of 1 year.” The <code>unit_mult</code> column represents the number of zeroes you should add to the value column. For instance, if value is in millions, then the unit multiplier will be 6. If in billions, then the unit multiplier will be 9.</p>
-<p>The meanings of the other codes are stored in our <code>params</code> object and can be fetched with a join. For instance to fetch the meaning of the <code>ref_area</code> code “W00”, we can perform a left join with the <code>params['ref_area']</code> data frame and use select to replace <code>ref_area</code> with the parameter description:</p>
-<div id="3f48dae1" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join df with params['ref_area'] to fetch code description</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.merge(params[<span class="st">'ref_area'</span>], left_on<span class="op">=</span><span class="st">'ref_area'</span>,right_on<span class="op">=</span><span class="st">'input_code'</span>,how<span class="op">=</span><span class="st">'left'</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop redundant columns and rename description column</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'ref_area'</span>,<span class="st">'input_code'</span>]).rename(columns<span class="op">=</span>{<span class="st">"description"</span>:<span class="st">"ref_area"</span>})</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View first few columns in the modified data frame</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">freq</th>
-<th data-quarto-table-cell-role="th">commodity</th>
-<th data-quarto-table-cell-role="th">unit_measure</th>
-<th data-quarto-table-cell-role="th">unit_mult</th>
-<th data-quarto-table-cell-role="th">time_format</th>
-<th data-quarto-table-cell-role="th">time_period</th>
-<th data-quarto-table-cell-role="th">obs_value</th>
-<th data-quarto-table-cell-role="th">ref_area</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>A</td>
-<td>PCOAL</td>
-<td>IX</td>
-<td>0</td>
-<td>P1Y</td>
-<td>2000</td>
-<td>39.351023</td>
-<td>All Countries, excluding the IO</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>A</td>
-<td>PCOAL</td>
-<td>IX</td>
-<td>0</td>
-<td>P1Y</td>
-<td>2001</td>
-<td>49.337859</td>
-<td>All Countries, excluding the IO</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>A</td>
-<td>PCOAL</td>
-<td>IX</td>
-<td>0</td>
-<td>P1Y</td>
-<td>2002</td>
-<td>39.494909</td>
-<td>All Countries, excluding the IO</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>A</td>
-<td>PCOAL</td>
-<td>IX</td>
-<td>0</td>
-<td>P1Y</td>
-<td>2003</td>
-<td>43.287888</td>
-<td>All Countries, excluding the IO</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>A</td>
-<td>PCOAL</td>
-<td>IX</td>
-<td>0</td>
-<td>P1Y</td>
-<td>2004</td>
-<td>82.918586</td>
-<td>All Countries, excluding the IO</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</section>
-<section id="rate-and-bandwidth-limit-management" class="level2">
-<h2 class="anchored" data-anchor-id="rate-and-bandwidth-limit-management">Rate and Bandwidth Limit Management</h2>
-<section id="setting-a-unique-application-name-with-set_imf_app_name" class="level3">
-<h3 class="anchored" data-anchor-id="setting-a-unique-application-name-with-set_imf_app_name">Setting a Unique Application Name with <code>set_imf_app_name</code></h3>
-<p><code>imfp.set_imf_app_name()</code> allows users to set a custom application name to be used when making API calls to the IMF API. The IMF API has an application-based rate limit of 50 requests per second, with the application identified by the “user_agent” variable in the request header.</p>
-<p>This could prove problematic if the <code>imfp</code> library became too popular and too many users tried to make simultaneous API requests using the default app name. By setting a custom application name, users can avoid hitting rate limits and being blocked by the API. <code>imfp.set_imf_app_name()</code> sets the application name by changing the <code>IMF_APP_NAME</code> variable in the environment. If this variable doesn’t exist, <code>imfp.set_imf_app_name()</code> will create it.</p>
-<p>To set a custom application name, simply call the <code>imfp.set_imf_app_name()</code> function with your desired application name as an argument:</p>
-<div id="5258312b" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set custom app name as an environment variable</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>imfp.set_imf_app_name(<span class="st">"my_custom_app_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The function will throw an error if the provided name is missing, NULL, NA, not a string, or longer than 255 characters. If the provided name is “imfr” (the default) or an empty string, the function will issue a warning recommending the use of a unique app name to avoid hitting rate limits.</p>
-</section>
-<section id="changing-the-enforced-wait-time-between-api-calls-with-set_imf_wait_time" class="level3">
-<h3 class="anchored" data-anchor-id="changing-the-enforced-wait-time-between-api-calls-with-set_imf_wait_time">Changing the enforced wait time between API calls with <code>set_imf_wait_time</code></h3>
-<p>By default, <code>imfp</code> enforces a mandatory 1.5-second wait time between API calls to prevent repeated or recursive calls from exceeding the API’s bandwidth/rate limit. This wait time should be sufficient for most applications. However, if you are running parallel processes using <code>imfp</code> (e.g.&nbsp;during cross-platform testing), this wait time may be insufficient to prevent you from running up against the API’s rate and bandwidth limits. You can change this wait time by calling the <code>set_imf_wait_time</code> function with a numeric value, in seconds. For instance, to enforce a five-second wait time between API calls, use <code>set_imf_wait_time(10)</code>.</p>
-<p>Also note that by default, <code>imfp</code> functions will retry any API call rejected for bandwidth or rate limit reasons. The number of times <code>imfp</code> will attempt the call is set by the <code>times</code> argument, with a default value of 3. (With this value, requests will be retried twice after an initial failure.) Note that <code>imfp</code> enforces an exponentially increasing wait time between function calls, with a base wait time of 5 seconds on the first retry, so it is not recommended to set a high value for <code>times</code>.</p>
-</section>
-</section>
-<section id="planned-features" class="level2">
-<h2 class="anchored" data-anchor-id="planned-features">Planned features</h2>
-<ul>
-<li>If pyproject.toml version has been incremented, automatically deploy Github release from main with release notes auto-generated from <code>News</code> file or PR message</li>
-<li>Implement automatic build/render of readthedocs documentation with Sphinx</li>
-<li>Render/publish Github Pages documentation with Quarto</li>
-<li>Automatically update all lockfile dependencies</li>
-<li>Move response mocking functionality from <code>_download_parse</code> to <code>_imf_get</code></li>
-<li>Investigate and implement different and more appropriate exception types, as we’re currently handling too many different cases with <code>ValueError</code></li>
-<li>More fully investigate the types of metadata available through the API and the most appropriate way to return them when a user calls <code>include_metadata</code></li>
-<li>Implement optional response caching for <code>imf_databases</code> and <code>imf_parameters</code></li>
-<li>Simplify and modularize some of the code, particularly in <code>imf_dataset</code></li>
-</ul>
 </section>
 <section id="contributing" class="level2">
 <h2 class="anchored" data-anchor-id="contributing">Contributing</h2>
@@ -845,13 +450,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>To fix a bug:
 <ul>
 <li>Fork and clone the repository and open a terminal in the repository directory</li>
+<li>Install <a href="https://astral.sh/setup-uv/">uv</a> with <code>curl -LsSf https://astral.sh/uv/install.sh | sh</code></li>
+<li>Install the dependencies with <code>uv sync</code></li>
 <li>Install a git hook to enforce conventional commits with <code>curl -o- https://raw.githubusercontent.com/tapsellorg/conventional-commits-git-hook/master/scripts/install.sh | sh</code></li>
 <li>Create a fix, commit it with an <a href="https://www.conventionalcommits.org/en/v1.0.0-beta.4/">“Angular-style Conventional Commit”</a> message, and push it to your fork</li>
 <li>Open a pull request to our <code>main</code> branch</li>
 </ul></li>
 </ol>
-<p>Note that you will need to install the <a href="https://astral.sh/setup-uv/">uv</a> package manager to install the dependencies and run the tests, and the <a href="https://quarto.org/docs/download/">Quarto CLI tool</a> to render the documentation.</p>
-<p>Note that version incrementing, package building, testing, documentation rendering, publishing to PyPI, and Github release creation is handled automatically by the GitHub Actions workflow based on the commit messages.</p>
+<p>Note that if you want to change and preview the documentation, you will need to install the <a href="https://quarto.org/docs/download/">Quarto CLI tool</a>.</p>
+<p>Version incrementing, package building, testing, changelog generation, documentation rendering, publishing to PyPI, and Github release creation is handled automatically by the GitHub Actions workflow based on the commit messages.</p>
 
 
 </section>
@@ -940,6 +547,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1050,6 +659,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
