@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/demo.html</loc>
-    <lastmod>2025-01-22T15:30:26.593Z</lastmod>
-  </url>
-  <url>
     <loc>https://Promptly-Technologies-LLC.github.io/imfp/index.html</loc>
-    <lastmod>2025-01-22T15:55:46.477Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/parameters.html</loc>
-    <lastmod>2025-01-22T17:59:24.318Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/datasets.html</loc>
-    <lastmod>2025-01-22T16:08:04.977Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/installation.html</loc>
-    <lastmod>2025-01-22T17:56:13.074Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/databases.html</loc>
-    <lastmod>2025-01-22T17:55:42.795Z</lastmod>
+    <lastmod>2025-01-27T22:24:49.969Z</lastmod>
   </url>
   <url>
     <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/rate_limits.html</loc>
-    <lastmod>2025-01-22T18:01:03.212Z</lastmod>
+    <lastmod>2025-01-27T22:24:49.965Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/installation.html</loc>
+    <lastmod>2025-01-27T22:24:49.965Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/datasets.html</loc>
+    <lastmod>2025-01-27T22:24:49.965Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/databases.html</loc>
+    <lastmod>2025-01-27T22:24:49.965Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/demo.html</loc>
+    <lastmod>2025-01-27T22:24:49.965Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/parameters.html</loc>
+    <lastmod>2025-01-27T22:24:49.965Z</lastmod>
   </url>
   <url>
     <loc>https://Promptly-Technologies-LLC.github.io/imfp/docs/usage.html</loc>
-    <lastmod>2025-01-22T21:28:31.503Z</lastmod>
+    <lastmod>2025-01-27T22:24:49.969Z</lastmod>
   </url>
 </urlset>
