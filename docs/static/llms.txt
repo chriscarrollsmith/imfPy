@@ -707,7 +707,7 @@ df["year"] = pd.to_numeric(df["year"])
 df["quarter"] = pd.to_numeric(df["quarter"])
 df["month"] = pd.to_numeric(df["month"])
 
-df[["time_period", "year", "quarter", "month"]].head(5)
+df[["time_period", "year", "quarter", "month"]].head()
 ```
 
 ### Summarizing Data
@@ -820,10 +820,6 @@ exchange_rate['time_period'] = exchange_rate['time_period'].str[:4]
 ```
 
 ``` {python}
-exchange_rate.tail()
-```
-
-``` {python}
 #| include: false
 #| echo: false
 # Hidden fixup to filter out exchange rate data before 2010
@@ -904,7 +900,7 @@ merged['real_gdp'] = (
 merged['real_gdp_per_capita'] = merged['real_gdp'] / merged['adjusted_value_population']
 
 # Display the first 5 rows of the transformed data
-merged[['time_period', 'real_gdp', 'real_gdp_per_capita']].head(5)
+merged[['time_period', 'real_gdp', 'real_gdp_per_capita']].head()
 ```
 
 ### Exchange Rate Adjustment
